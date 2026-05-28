@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dirección de Promoción y Desarrollo de Inversiones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: #f7f5f0; min-height: 100vh; }
+  .topbar { background: #0f1923; padding: .6rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
+  .topbar-left { font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: rgba(232,220,200,.45); }
+  .hero { background: #0f1923; padding: 3.5rem 2rem 3rem; position: relative; overflow: hidden; }
+  .hero::before { content:''; position:absolute; top:-80px; right:-80px; width:400px; height:400px; border:1px solid rgba(232,220,200,.05); border-radius:50%; pointer-events:none; }
+  .hero::after  { content:''; position:absolute; top:-40px; right:-40px; width:220px; height:220px; border:1px solid rgba(232,220,200,.04); border-radius:50%; pointer-events:none; }
+  .hero-eyebrow { font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: #00aec3; margin-bottom: .75rem; }
+  .hero-org { font-size: 12px; color: rgba(232,220,200,.45); margin-bottom: .2rem; }
+  .hero-sub-org { font-size: 12px; color: rgba(232,220,200,.35); margin-bottom: 1.5rem; }
+  .hero-title { font-family: 'DM Serif Display', serif; font-size: 36px; color: #e8dcc8; line-height: 1.15; margin: 0 0 .75rem; max-width: 560px; }
+  .hero-desc { font-size: 14px; color: rgba(232,220,200,.5); max-width: 480px; line-height: 1.7; }
+  .accent-bar { height: 3px; background: linear-gradient(90deg, #e72276 0%, #826993 35%, #2f6485 65%, #00aec3 100%); }
+  .content { padding: 2rem; max-width: 1100px; }
+  .section-label { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #aaa; margin-bottom: 1.25rem; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+  .card { background: #fff; border-radius: 12px; border: 1px solid #e8e4dc; padding: 1.5rem 1.5rem 1.25rem; transition: transform .2s, box-shadow .2s; position: relative; overflow: hidden; text-decoration: none; display: block; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,.07); }
+  .card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background: var(--accent); }
+  .card-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--icon-bg); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+  .card-icon i { font-size: 20px; color: var(--accent); }
+  .card-tag { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: .4rem; font-weight: 500; }
+  .card-title { font-family: 'DM Serif Display', serif; font-size: 20px; color: #1a1a1a; margin: 0 0 .5rem; line-height: 1.2; }
+  .card-desc { font-size: 12.5px; color: #888; line-height: 1.6; margin: 0 0 1.25rem; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; border-top: .5px solid #f0ede8; padding-top: .9rem; }
+  .card-cta { font-size: 12px; color: var(--accent); font-weight: 500; display: flex; align-items: center; gap: 4px; }
+  .card-cta i { font-size: 14px; transition: transform .2s; }
+  .card:hover .card-cta i { transform: translateX(3px); }
+  .card-update { font-size: 11px; color: #bbb; }
+  .card-soon { opacity: .7; cursor: default; }
+  .card-soon:hover { transform: none; box-shadow: none; }
+  .badge-soon { position:absolute; top:12px; right:12px; background:#f0ede8; color:#aaa; font-size:10px; padding:2px 8px; border-radius:20px; }
+  .bottom-strip { background: #0f1923; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; margin-top: auto; }
+  .bottom-strip p { font-size: 11px; color: rgba(232,220,200,.3); }
+  .dot { color: rgba(232,220,200,.2); margin: 0 .4rem; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="topbar-left">Ministerio de Producción, Ciencia e Innovación Tecnológica · PBA</span>
+</div>
+
+<div class="hero">
+  <div class="hero-eyebrow">Portal de Informes</div>
+  <div class="hero-org">Ministerio de Producción, Ciencia e Innovación Tecnológica · PBA</div>
+  <div class="hero-sub-org">Subsecretaría de Desarrollo Comercial y Promoción de Inversiones</div>
+  <h1 class="hero-title">Dirección de Promoción y Desarrollo de Inversiones</h1>
+  <p class="hero-desc">Seguimiento y análisis de los principales instrumentos de inversión: IED, líneas de crédito y régimen de incentivos.</p>
+</div>
+
+<div class="accent-bar"></div>
+
+<div class="content">
+  <div class="section-label">Secciones del informe</div>
+  <div class="cards">
+
+    <a class="card" style="--accent:#2f6485; --icon-bg:#e6f1fb;" href="ied.html">
+      <div class="card-icon"><i class="ti ti-trending-up"></i></div>
+      <div class="card-tag">Inversión Extranjera</div>
+      <div class="card-title">Informe IED</div>
+      <p class="card-desc">Flujos de inversión extranjera directa por sector industrial. Evolución trimestral 2023–2025.</p>
+      <div class="card-footer">
+        <span class="card-cta">Ver informe <i class="ti ti-arrow-right"></i></span>
+        <span class="card-update">4T 2025</span>
+      </div>
+    </a>
+
+    <a class="card" style="--accent:#826993; --icon-bg:#f3eef7;" href="credito.html">
+      <div class="card-icon"><i class="ti ti-building-bank"></i></div>
+      <div class="card-tag">Financiamiento</div>
+      <div class="card-title">Líneas de Crédito</div>
+      <p class="card-desc">Distribución territorial de créditos del programa Impulso. Análisis por partido y monto asignado.</p>
+      <div class="card-footer">
+        <span class="card-cta">Ver informe <i class="ti ti-arrow-right"></i></span>
+        <span class="card-update">4T 2025</span>
+      </div>
+    </a>
+
+    <div class="card card-soon" style="--accent:#00aec3; --icon-bg:#e0f7fa;">
+      <span class="badge-soon">En preparación</span>
+      <div class="card-icon"><i class="ti ti-bolt"></i></div>
+      <div class="card-tag">Régimen de Incentivos</div>
+      <div class="card-title">RIGI</div>
+      <p class="card-desc">Régimen de incentivos para grandes inversiones. Proyectos adheridos, sectores y montos comprometidos.</p>
+      <div class="card-footer">
+        <span class="card-cta" style="color:#bbb">Próximamente</span>
+        <span class="card-update"></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="bottom-strip">
+  <p>Dirección de Promoción y Desarrollo de Inversiones <span class="dot">·</span> Subsecretaría de Desarrollo Comercial y Promoción de Inversiones <span class="dot">·</span> PBA</p>
+  <p>4T 2025</p>
+</div>
+
+</body>
+</html>
