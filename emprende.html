@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emprendé — Líneas de Crédito · DPDI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: #f7f5f0; min-height: 100vh; }
+  .topbar { background: #0f1923; padding: .6rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+  .topbar-left { font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: rgba(232,220,200,.45); }
+  .topbar-right a { font-size: 12px; color: rgba(232,220,200,.5); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+  .topbar-right a:hover { color: rgba(232,220,200,.8); }
+  .nav { background: #0f1923; border-top: 1px solid rgba(232,220,200,.07); padding: 0 2rem; display: flex; }
+  .nav a { font-size: 12px; color: rgba(232,220,200,.4); text-decoration: none; padding: .75rem 1.25rem; border-bottom: 2px solid transparent; transition: all .15s; }
+  .nav a:hover { color: rgba(232,220,200,.75); }
+  .nav a.active { color: #826993; border-bottom-color: #826993; }
+  .subnav { background: #fff; border-bottom: 1px solid #e8e4dc; padding: 0 2rem; display: flex; }
+  .subnav a { font-size: 12px; color: #aaa; text-decoration: none; padding: .65rem 1.25rem; border-bottom: 2px solid transparent; transition: all .15s; }
+  .subnav a:hover { color: #e72276; }
+  .subnav a.active { color: #e72276; border-bottom-color: #e72276; font-weight: 500; }
+  .accent-bar { height: 3px; background: linear-gradient(90deg, #e72276 0%, #826993 35%, #2f6485 65%, #00aec3 100%); }
+  .page-header { background: #fff; border-bottom: 1px solid #e8e4dc; padding: 1.5rem 2rem; }
+  .page-header-eyebrow { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #e72276; margin-bottom: .4rem; }
+  .page-header-title { font-family: 'DM Serif Display', serif; font-size: 26px; color: #1a1a1a; margin-bottom: .3rem; }
+  .page-header-sub { font-size: 13px; color: #999; }
+  .tabs-bar { background: #fff; border-bottom: 1px solid #e8e4dc; padding: 0 2rem; display: flex; align-items: center; }
+  .tabs-bar-label { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: #ccc; padding-right: 1rem; border-right: 1px solid #e8e4dc; margin-right: .5rem; flex-shrink: 0; }
+  .tab { font-size: 12px; color: #aaa; padding: .65rem 1.1rem; border-bottom: 2px solid transparent; cursor: pointer; transition: all .15s; border: none; background: none; font-family: 'DM Sans', sans-serif; }
+  .tab:hover { color: #e72276; }
+  .tab.active { color: #e72276; border-bottom: 2px solid #e72276; font-weight: 500; }
+  .tab-total:hover { color: #826993; }
+  .tab-total.active { color: #826993; border-bottom-color: #826993; }
+  .content { padding: 2rem; max-width: 1100px; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* TARJETAS KPI */
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 1.25rem; }
+  .kpi-card { background: #fff; border: 1px solid #e8e4dc; border-radius: 10px; padding: 1rem 1.25rem; position: relative; overflow: hidden; }
+  .kpi-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background: var(--accent, #e72276); }
+  .kpi-label { font-size: 11px; color: #aaa; letter-spacing: .04em; margin-bottom: 6px; }
+  .kpi-value { font-family: 'DM Serif Display', serif; font-size: 22px; color: #1a1a1a; line-height: 1.1; margin-bottom: 3px; }
+  .kpi-value.placeholder { color: #ccc; font-style: italic; font-size: 16px; }
+  .kpi-sub { font-size: 11px; color: #bbb; }
+
+  .iframe-wrap { border-radius: 12px; overflow: hidden; border: 1px solid #e8e4dc; background: #fff; }
+  .iframe-wrap iframe { width: 100%; height: 800px; border: none; display: block; }
+  .map-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 400px; color: #ccc; gap: .75rem; background: #fff; border: 1px solid #e8e4dc; border-radius: 12px; }
+  .map-placeholder i { font-size: 48px; }
+  .map-placeholder p { font-size: 13px; }
+  .map-placeholder code { font-size: 11px; background: #f5f5f0; padding: 4px 8px; border-radius: 4px; color: #999; }
+
+  .bottom-strip { background: #0f1923; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; margin-top: 2rem; }
+  .bottom-strip p { font-size: 11px; color: rgba(232,220,200,.3); }
+  .dot { color: rgba(232,220,200,.2); margin: 0 .4rem; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="topbar-left">Ministerio de Producción, Ciencia e Innovación Tecnológica · PBA</span>
+  <div class="topbar-right">
+    <a href="credito.html"><i class="ti ti-arrow-left"></i> Volver a Líneas de Crédito</a>
+  </div>
+</div>
+
+<div class="nav">
+  <a href="ied.html">Informe IED</a>
+  <a href="credito.html" class="active">Líneas de Crédito</a>
+  <a href="#" style="opacity:.4; cursor:default;">RIGI</a>
+</div>
+
+<div class="subnav">
+  <a href="impulso.html">Impulso</a>
+  <a href="emprende.html" class="active">Emprendé</a>
+</div>
+
+<div class="accent-bar"></div>
+
+<div class="page-header">
+  <div class="page-header-eyebrow">Líneas de Crédito · Emprendé</div>
+  <div class="page-header-title">Emprendé</div>
+  <div class="page-header-sub">Línea de crédito para emprendedores y pequeñas empresas · Provincia de Buenos Aires</div>
+</div>
+
+<div class="tabs-bar">
+  <span class="tabs-bar-label">Edición</span>
+  <button class="tab active" onclick="showTab('e2024', this)">2024</button>
+  <button class="tab" onclick="showTab('e2025', this)">2025</button>
+  <button class="tab tab-total" onclick="showTab('etotal', this)">Totales</button>
+</div>
+
+<div class="content">
+
+  <!-- ── EDICIÓN 2024 ── -->
+  <div class="tab-panel active" id="panel-e2024">
+    <div class="kpi-grid">
+      <!-- Completá los valores reemplazando el texto dentro de .kpi-value -->
+      <div class="kpi-card" style="--accent:#e72276">
+        <div class="kpi-label">Créditos otorgados</div>
+        <div class="kpi-value placeholder">—</div>
+        <div class="kpi-sub">Edición 2024</div>
+      </div>
+      <div class="kpi-card" style="--accent:#e72276">
+        <div class="kpi-label">Monto total</div>
+        <div class="kpi-value placeholder">—</div>
+        <div class="kpi-sub">En pesos</div>
+      </div>
+      <div class="kpi-card" style="--accent:#e72276">
+        <div class="kpi-label">Partido líder</div>
+        <div class="kpi-value placeholder">—</div>
+        <div class="kpi-sub">Mayor cantidad de créditos</div>
+      </div>
+      <div class="kpi-card" style="--accent:#e72276">
+        <div class="kpi-label">Monto promedio</div>
+        <div class="kpi-value placeholder">—</div>
+        <div class="kpi-sub">Por crédito otorgado</div>
+      </div>
+    </div>
+    <!-- Reemplazá el map-placeholder por:
+         <div class="iframe-wrap"><iframe src="emprende_2024.html"></iframe></div> -->
+    <div class="map-placeholder">
+      <i class="ti ti-rocket"></i>
+      <p>Mapa / Dashboard — Edición 2024</p>
+      <code>&lt;div class="iframe-wrap"&gt;&lt;iframe src="emprende_2024.html"&gt;&lt;/iframe&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+
+  <!-- ── EDICIÓN 2025 ── -->
+  <div class="tab-panel" id="panel-e2025">
+    <div class="kpi-grid">
+      <div class="kpi-card" style="--accent:#e72276">
+        <div class="kpi-label">Créditos otorgados</div>
+        <div class="kpi-value placeholder">—</div>
+        <div class="kpi-sub">Edición 2025</div>
+      </div>
+      <div class="kpi-card" style="--accent:#e72276">
+        <div class="kpi-label">Monto total</div>
+        <div class="kpi-value placeholder">—</div>
+        <div class="kpi-sub">En pesos</div>
+      </div>
+      <div class="kpi-card" style="--accent:#e72276">
+        <div class="kpi-label">Partido líder</div>
+        <div class="kpi-value placeholder">—</div>
+        <div class="kpi-sub">Mayor cantidad de créditos</div>
+      </div>
+      <div class="kpi-card" style="--accent:#e72276">
+        <div class="kpi-label">Monto promedio</div>
+        <div class="kpi-value placeholder">—</div>
+        <div class="kpi-sub">Por crédito otorgado</div>
+      </div>
+    </div>
+    <div class="map-placeholder">
+      <i class="ti ti-rocket"></i>
+      <p>Mapa / Dashboard — Edición 2025</p>
+      <code>&lt;div class="iframe-wrap"&gt;&lt;iframe src="emprende_2025.html"&gt;&lt;/iframe&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+
+  <!-- ── TOTALES ── -->
+  <div class="tab-panel" id="panel-etotal">
+    <div class="kpi-grid">
+      <div class="kpi-card" style="--accent:#826993">
+        <div class="kpi-label">Créditos totales</div>
+        <div class="kpi-value placeholder">—</div>
+        <div class="kpi-sub">Todas las ediciones</div>
+      </div>
+      <div class="kpi-card" style="--accent:#826993">
+        <div class="kpi-label">Monto total acumulado</div>
+        <div class="kpi-value placeholder">—</div>
+        <div class="kpi-sub">En pesos</div>
+      </div>
+      <div class="kpi-card" style="--accent:#826993">
+        <div class="kpi-label">Partido líder histórico</div>
+        <div class="kpi-value placeholder">—</div>
+        <div class="kpi-sub">Mayor cantidad acumulada</div>
+      </div>
+      <div class="kpi-card" style="--accent:#826993">
+        <div class="kpi-label">Monto promedio</div>
+        <div class="kpi-value placeholder">—</div>
+        <div class="kpi-sub">Por crédito histórico</div>
+      </div>
+    </div>
+    <div class="map-placeholder">
+      <i class="ti ti-chart-bar"></i>
+      <p>Dashboard de totales — Emprendé</p>
+      <code>&lt;div class="iframe-wrap"&gt;&lt;iframe src="emprende_totales.html"&gt;&lt;/iframe&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+
+</div>
+
+<div class="bottom-strip">
+  <p>Dirección de Promoción y Desarrollo de Inversiones <span class="dot">·</span> Subsecretaría de Desarrollo Comercial y Promoción de Inversiones <span class="dot">·</span> PBA</p>
+  <p>4T 2025</p>
+</div>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
