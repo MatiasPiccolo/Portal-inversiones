@@ -6,7 +6,9 @@ Este repositorio contiene informes, visualizaciones interactivas de los crédito
 
 ## 📍 Informe
 
-- [PORTADA](https://matiaspiccolo.github.io/Portal-inversiones/index.html)
+- [Portal Principal](https://matiaspiccolo.github.io/Portal-inversiones/index.html)
+- [Informe IED](https://matiaspiccolo.github.io/Portal-inversiones/ied.html)
+- [Líneas de Crédito](https://matiaspiccolo.github.io/Portal-inversiones/credito.html)
 ---
 
 ## 📂 Archivos incluidos
