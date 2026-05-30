@@ -14,7 +14,7 @@
   .topbar-left { font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: rgba(232,220,200,.45); }
   .topbar-right a { font-size: 12px; color: rgba(232,220,200,.5); text-decoration: none; display: flex; align-items: center; gap: 6px; }
   .topbar-right a:hover { color: rgba(232,220,200,.8); }
-  .nav { background: #0f1923; border-top: 1px solid rgba(232,220,200,.07); padding: 0 2rem; display: flex; gap: 0; }
+  .nav { background: #0f1923; border-top: 1px solid rgba(232,220,200,.07); padding: 0 2rem; display: flex; }
   .nav a { font-size: 12px; color: rgba(232,220,200,.4); text-decoration: none; padding: .75rem 1.25rem; border-bottom: 2px solid transparent; transition: all .15s; }
   .nav a:hover { color: rgba(232,220,200,.75); }
   .nav a.active { color: #826993; border-bottom-color: #826993; }
@@ -23,13 +23,22 @@
   .page-header-eyebrow { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #826993; margin-bottom: .5rem; }
   .page-header-title { font-family: 'DM Serif Display', serif; font-size: 28px; color: #1a1a1a; margin-bottom: .4rem; }
   .page-header-sub { font-size: 13px; color: #999; }
-  .content { padding: 2rem; max-width: 1000px; }
-  .section-label { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #aaa; margin-bottom: 1rem; }
-  .card { background: #fff; border-radius: 12px; border: 1px solid #e8e4dc; padding: 1.5rem; margin-bottom: 1.5rem; }
-  .card-title { font-size: 14px; font-weight: 500; color: #1a1a1a; margin-bottom: 4px; }
-  .card-sub { font-size: 12px; color: #999; margin-bottom: 1.25rem; }
-  .map-wrap { border-radius: 8px; overflow: hidden; border: 1px solid #e8e4dc; background: #000; }
-  .map-wrap img { width: 100%; display: block; }
+  .content { padding: 2rem; max-width: 1100px; }
+  .section-label { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #aaa; margin-bottom: 1.25rem; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .card { background: #fff; border-radius: 12px; border: 1px solid #e8e4dc; padding: 1.5rem 1.5rem 1.25rem; transition: transform .2s, box-shadow .2s; position: relative; overflow: hidden; text-decoration: none; display: block; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,.07); }
+  .card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background: var(--accent); }
+  .card-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--icon-bg); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+  .card-icon i { font-size: 20px; color: var(--accent); }
+  .card-tag { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: .4rem; font-weight: 500; }
+  .card-title { font-family: 'DM Serif Display', serif; font-size: 20px; color: #1a1a1a; margin: 0 0 .5rem; line-height: 1.2; }
+  .card-desc { font-size: 12.5px; color: #888; line-height: 1.6; margin: 0 0 1.25rem; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; border-top: .5px solid #f0ede8; padding-top: .9rem; }
+  .card-cta { font-size: 12px; color: var(--accent); font-weight: 500; display: flex; align-items: center; gap: 4px; }
+  .card-cta i { font-size: 14px; transition: transform .2s; }
+  .card:hover .card-cta i { transform: translateX(3px); }
+  .card-update { font-size: 11px; color: #bbb; }
   .bottom-strip { background: #0f1923; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; margin-top: 2rem; }
   .bottom-strip p { font-size: 11px; color: rgba(232,220,200,.3); }
   .dot { color: rgba(232,220,200,.2); margin: 0 .4rem; }
@@ -55,17 +64,35 @@
 <div class="page-header">
   <div class="page-header-eyebrow">Financiamiento · 4T 2025</div>
   <div class="page-header-title">Líneas de Crédito</div>
-  <div class="page-header-sub">Distribución territorial de créditos del programa Impulso · Provincia de Buenos Aires</div>
+  <div class="page-header-sub">Programas de financiamiento productivo · Provincia de Buenos Aires</div>
 </div>
 
 <div class="content">
-  <div class="section-label">Distribución territorial — programa Impulso</div>
-  <div class="card">
-    <div class="card-title">Montos asignados por partido</div>
-    <div class="card-sub">Provincia de Buenos Aires · Escala de color por monto · Rosa = mayor concentración</div>
-    <div class="map-wrap">
-      <img src="mapa_impulso.png" alt="Mapa de distribución territorial de créditos Impulso por partido de la Provincia de Buenos Aires">
-    </div>
+  <div class="section-label">Programas disponibles</div>
+  <div class="cards">
+
+    <a class="card" style="--accent:#826993; --icon-bg:#f3eef7;" href="impulso.html">
+      <div class="card-icon"><i class="ti ti-map-pin"></i></div>
+      <div class="card-tag">Crédito territorial</div>
+      <div class="card-title">Impulso</div>
+      <p class="card-desc">Distribución territorial de créditos por partido. Montos asignados y análisis geográfico en la Provincia de Buenos Aires.</p>
+      <div class="card-footer">
+        <span class="card-cta">Ver informe <i class="ti ti-arrow-right"></i></span>
+        <span class="card-update">4T 2025</span>
+      </div>
+    </a>
+
+    <a class="card" style="--accent:#e72276; --icon-bg:#fbeaf0;" href="emprende.html">
+      <div class="card-icon"><i class="ti ti-rocket"></i></div>
+      <div class="card-tag">Emprendedurismo</div>
+      <div class="card-title">Emprendé</div>
+      <p class="card-desc">Línea de crédito orientada a emprendedores y pequeñas empresas. Evolución de solicitudes y montos otorgados.</p>
+      <div class="card-footer">
+        <span class="card-cta">Ver informe <i class="ti ti-arrow-right"></i></span>
+        <span class="card-update">4T 2025</span>
+      </div>
+    </a>
+
   </div>
 </div>
 
