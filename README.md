@@ -6,7 +6,7 @@ Este repositorio contiene informes, visualizaciones interactivas de los crédito
 
 ## 📍 Informe
 
-- [INFROME IED](https://matiaspiccolo.github.io/Impulso/ied_argentina_industria_completo.html)
+- [PORTADA](https://matiaspiccolo.github.io/Portal-inversiones/index.html)
 ---
 
 ## 📂 Archivos incluidos
