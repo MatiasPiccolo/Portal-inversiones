@@ -3,7 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RIGI — DPDI</title>
+<title>RIGI — Dirección de Promoción y Desarrollo de Inversiones</title>
+
+<!-- META TAGS -->
+<meta name="description" content="Régimen de Incentivos para Grandes Inversiones. Proyectos adheridos por provincia y sector. Ministerio de Producción, Ciencia e Innovación Tecnológica · PBA.">
+<meta name="author" content="Dirección de Promoción y Desarrollo de Inversiones · PBA">
+<meta property="og:title" content="RIGI — Dirección de Promoción y Desarrollo de Inversiones">
+<meta property="og:description" content="Proyectos adheridos al Régimen de Incentivos para Grandes Inversiones. Distribución por provincia y sector.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta name="theme-color" content="#0f1923">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
@@ -13,8 +23,12 @@
 
   .topbar { background: #0f1923; padding: .6rem 2rem; display: flex; align-items: center; justify-content: space-between; }
   .topbar-left { font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: rgba(232,220,200,.45); }
+  .topbar-right { display: flex; align-items: center; gap: 1rem; }
   .topbar-right a { font-size: 12px; color: rgba(232,220,200,.5); text-decoration: none; display: flex; align-items: center; gap: 6px; }
   .topbar-right a:hover { color: rgba(232,220,200,.8); }
+  .btn-print { font-size: 11px; color: rgba(232,220,200,.4); background: none; border: 1px solid rgba(232,220,200,.15); border-radius: 6px; padding: 4px 10px; cursor: pointer; display: flex; align-items: center; gap: 5px; font-family: 'DM Sans', sans-serif; transition: all .15s; }
+  .btn-print:hover { color: rgba(232,220,200,.8); border-color: rgba(232,220,200,.35); }
+
   .nav { background: #0f1923; border-top: 1px solid rgba(232,220,200,.07); padding: 0 2rem; display: flex; }
   .nav a { font-size: 12px; color: rgba(232,220,200,.4); text-decoration: none; padding: .75rem 1.25rem; border-bottom: 2px solid transparent; transition: all .15s; }
   .nav a:hover { color: rgba(232,220,200,.75); }
@@ -26,7 +40,6 @@
   .page-header-title { font-family: 'DM Serif Display', serif; font-size: 28px; color: #1a1a1a; margin-bottom: .3rem; }
   .page-header-sub { font-size: 13px; color: #999; }
 
-  /* KPIs */
   .mast { background: #0f1923; margin: 1.5rem 2rem; border-radius: 12px; padding: 1.5rem 2rem; position: relative; overflow: hidden; }
   .mast::before { content:''; position:absolute; top:-60px; right:-60px; width:300px; height:300px; border:1px solid rgba(232,220,200,.05); border-radius:50%; pointer-events:none; }
   .mast-label { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(232,220,200,.35); margin-bottom: .75rem; }
@@ -37,49 +50,43 @@
   .kpi-ph { font-size: 14px; font-style: italic; color: rgba(232,220,200,.3); }
   .kpi-d { font-size: 11px; margin-top: 3px; color: rgba(232,220,200,.4); }
 
-  /* LAYOUT */
   .content { padding: 0 2rem 2rem; }
   .sec-label { font-size: 11px; letter-spacing: .09em; text-transform: uppercase; color: #aaa; margin: 1.5rem 0 .75rem; }
   .cw { background: #fff; border: 1px solid #e8e4dc; border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; }
   .ct { font-size: 14px; font-weight: 500; color: #1a1a1a; margin-bottom: 3px; }
   .cs { font-size: 12px; color: #888; margin-bottom: 1rem; }
 
-  /* DOS COLUMNAS */
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
   @media(max-width:700px){ .two-col { grid-template-columns: 1fr; } }
 
-  /* MAPA PLACEHOLDER */
   .map-zone { background: #fff; border: 1px solid #e8e4dc; border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; }
   .map-placeholder { flex: 1; min-height: 420px; border: 1.5px dashed #e0ddd8; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; color: #ccc; background: #faf9f7; }
   .map-placeholder i { font-size: 52px; }
   .map-placeholder p { font-size: 13px; }
   .map-placeholder code { font-size: 11px; background: #f0ede8; padding: 4px 8px; border-radius: 4px; color: #bbb; }
-  .map-placeholder img { width: 100%; height: 100%; object-fit: contain; border-radius: 8px; }
 
-  /* RANKING PROVINCIAS */
   .ranking-zone { background: #fff; border: 1px solid #e8e4dc; border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
   .ranking-list { display: flex; flex-direction: column; gap: 8px; }
   .ranking-row { display: flex; align-items: center; gap: 10px; }
   .ranking-num { font-size: 11px; color: #bbb; width: 16px; flex-shrink: 0; text-align: right; }
   .ranking-info { flex: 1; }
-  .ranking-name { font-size: 12px; font-weight: 500; color: #1a1a1a; margin-bottom: 3px; display: flex; align-items: center; gap: 6px; }
+  .ranking-name { font-size: 12px; font-weight: 500; color: #1a1a1a; margin-bottom: 3px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
   .ranking-bar-track { height: 6px; background: #f0ede8; border-radius: 3px; overflow: hidden; }
   .ranking-bar-fill { height: 100%; border-radius: 3px; background: #00aec3; transition: width .4s; }
   .ranking-val { font-size: 11px; color: #00aec3; width: 80px; text-align: right; flex-shrink: 0; font-variant-numeric: tabular-nums; }
   .badge-shared { font-size: 9px; background: #e0f7fa; color: #00aec3; border: 1px solid #b2ebf2; padding: 1px 6px; border-radius: 10px; font-weight: 500; }
   .badge-ph { font-size: 9px; background: #f0ede8; color: #ccc; border: 1px solid #e8e4dc; padding: 1px 6px; border-radius: 10px; }
 
-  /* ANÁLISIS TEXTO */
   .analysis-box { background: #f7f5f0; border-radius: 8px; padding: 1rem 1.25rem; }
   .analysis-box p { font-size: 12.5px; color: #666; line-height: 1.75; }
   .analysis-ph { font-size: 12.5px; color: #ccc; font-style: italic; line-height: 1.75; }
 
-  /* TABLA PROYECTOS */
+  /* TABLA */
   table.t { width: 100%; border-collapse: collapse; font-size: 12px; }
   table.t th { font-size: 11px; font-weight: 500; color: #999; border-bottom: .5px solid #e8e4dc; padding: 7px 8px 7px 0; text-align: left; }
   table.t td { padding: 8px 8px 8px 0; border-bottom: .5px solid #f0ede8; color: #1a1a1a; vertical-align: middle; }
   table.t tr:last-child td { border-bottom: none; }
-  table.t tr:hover td { background: #faf9f7; }
+  table.t tr.clickable:hover td { background: #f0f9fb; cursor: pointer; }
   .prov-tag { display: inline-flex; align-items: center; gap: 3px; background: #f0ede8; color: #888; font-size: 10px; padding: 2px 7px; border-radius: 10px; margin: 1px 2px 1px 0; white-space: nowrap; }
   .prov-tag.shared { background: #e0f7fa; color: #00aec3; }
   .sector-tag { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 10px; background: var(--bg); color: var(--c); font-weight: 500; }
@@ -89,6 +96,41 @@
   .status-presentado { background: #e8eaf6; color: #3949ab; }
   .monto-cell { font-variant-numeric: tabular-nums; color: #1a1a1a; white-space: nowrap; }
   .monto-ph { color: #ccc; font-style: italic; }
+  .ver-ficha { font-size: 10px; color: #00aec3; display: flex; align-items: center; gap: 3px; white-space: nowrap; }
+
+  /* DRAWER (FICHA DE PROYECTO) */
+  .drawer-overlay { position: fixed; inset: 0; background: rgba(15,25,35,0.5); z-index: 100; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  .drawer-overlay.open { opacity: 1; pointer-events: all; }
+  .drawer { position: fixed; top: 0; right: -440px; width: 420px; max-width: 95vw; height: 100vh; background: #fff; z-index: 101; box-shadow: -8px 0 32px rgba(0,0,0,.12); transition: right .3s cubic-bezier(.4,0,.2,1); overflow-y: auto; display: flex; flex-direction: column; }
+  .drawer.open { right: 0; }
+  .drawer-header { background: #0f1923; padding: 1.5rem; position: sticky; top: 0; z-index: 1; }
+  .drawer-close { position: absolute; top: 1rem; right: 1rem; background: rgba(255,255,255,.1); border: none; border-radius: 6px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #e8dcc8; font-size: 16px; transition: background .15s; }
+  .drawer-close:hover { background: rgba(255,255,255,.2); }
+  .drawer-eyebrow { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: #00aec3; margin-bottom: .4rem; }
+  .drawer-title { font-family: 'DM Serif Display', serif; font-size: 22px; color: #e8dcc8; line-height: 1.2; margin-bottom: .5rem; }
+  .drawer-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 1.25rem; }
+  .drawer-section-label { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: #aaa; margin-bottom: .5rem; }
+  .drawer-kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .drawer-kpi { background: #f7f5f0; border-radius: 8px; padding: .75rem; }
+  .drawer-kpi-l { font-size: 11px; color: #aaa; margin-bottom: 3px; }
+  .drawer-kpi-v { font-size: 17px; font-weight: 500; color: #1a1a1a; }
+  .drawer-kpi-ph { color: #ccc; font-style: italic; font-size: 13px; }
+  .drawer-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .drawer-analysis { font-size: 13px; color: #666; line-height: 1.7; background: #f7f5f0; border-radius: 8px; padding: 1rem; }
+  .drawer-analysis.ph { color: #ccc; font-style: italic; }
+
+  /* VERSIÓN IMPRIMIR */
+  @media print {
+    .topbar, .nav, .accent-bar, .btn-print, .drawer, .drawer-overlay { display: none !important; }
+    body { background: #fff; }
+    .mast { background: #0f1923 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; margin: 0 0 1rem; border-radius: 0; }
+    .content { padding: 0 1rem 1rem; }
+    .two-col { grid-template-columns: 1fr 1fr; }
+    .cw, .map-zone, .ranking-zone { break-inside: avoid; border: 1px solid #e0e0e0; }
+    table.t tr.clickable:hover td { background: transparent; }
+    .page-header { border-bottom: 2px solid #e0e0e0; }
+    .bottom-strip { background: #0f1923 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
 
   .bottom-strip { background: #0f1923; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
   .bottom-strip p { font-size: 11px; color: rgba(232,220,200,.3); }
@@ -100,6 +142,7 @@
 <div class="topbar">
   <span class="topbar-left">Ministerio de Producción, Ciencia e Innovación Tecnológica · PBA</span>
   <div class="topbar-right">
+    <button class="btn-print" onclick="window.print()"><i class="ti ti-printer"></i> Imprimir</button>
     <a href="index.html"><i class="ti ti-arrow-left"></i> Volver al portal</a>
   </div>
 </div>
@@ -116,91 +159,50 @@
   <div class="page-header-sub">Régimen de Incentivos para Grandes Inversiones · Proyectos adheridos por provincia y sector</div>
 </div>
 
-<!-- KPIs -->
 <div class="mast">
   <div class="mast-label">Panorama general — proyectos adheridos al RIGI</div>
   <div class="mast-kpis">
-    <div class="kpi">
-      <div class="kpi-l">Proyectos totales</div>
-      <!-- Reemplazá por el número real, ej: <div class="kpi-v">47</div> -->
-      <div class="kpi-v kpi-ph">—</div>
-      <div class="kpi-d">Adheridos al régimen</div>
-    </div>
-    <div class="kpi">
-      <div class="kpi-l">Inversión comprometida</div>
-      <!-- Reemplazá por el monto real, ej: <div class="kpi-v">$28.4 B</div> -->
-      <div class="kpi-v kpi-ph">—</div>
-      <div class="kpi-d">En millones de USD</div>
-    </div>
-    <div class="kpi">
-      <div class="kpi-l">Provincias involucradas</div>
-      <div class="kpi-v kpi-ph">—</div>
-      <div class="kpi-d">Incluye proyectos compartidos</div>
-    </div>
-    <div class="kpi">
-      <div class="kpi-l">Sectores representados</div>
-      <div class="kpi-v kpi-ph">—</div>
-      <div class="kpi-d">Por tipo de actividad</div>
-    </div>
-    <div class="kpi">
-      <div class="kpi-l">Proyectos aprobados</div>
-      <div class="kpi-v kpi-ph">—</div>
-      <div class="kpi-d">Estado de avance</div>
-    </div>
-    <div class="kpi">
-      <div class="kpi-l">Proyectos en revisión</div>
-      <div class="kpi-v kpi-ph">—</div>
-      <div class="kpi-d">Estado de avance</div>
-    </div>
+    <div class="kpi"><div class="kpi-l">Proyectos totales</div><div class="kpi-v kpi-ph">—</div><div class="kpi-d">Adheridos al régimen</div></div>
+    <div class="kpi"><div class="kpi-l">Inversión comprometida</div><div class="kpi-v kpi-ph">—</div><div class="kpi-d">En millones de USD</div></div>
+    <div class="kpi"><div class="kpi-l">Provincias involucradas</div><div class="kpi-v kpi-ph">—</div><div class="kpi-d">Incluye proyectos compartidos</div></div>
+    <div class="kpi"><div class="kpi-l">Sectores representados</div><div class="kpi-v kpi-ph">—</div><div class="kpi-d">Por tipo de actividad</div></div>
+    <div class="kpi"><div class="kpi-l">Proyectos aprobados</div><div class="kpi-v kpi-ph">—</div><div class="kpi-d">Estado de avance</div></div>
+    <div class="kpi"><div class="kpi-l">Proyectos en revisión</div><div class="kpi-v kpi-ph">—</div><div class="kpi-d">Estado de avance</div></div>
   </div>
 </div>
 
 <div class="content">
 
-  <!-- MAPA + RANKING -->
   <div class="sec-label">Distribución territorial</div>
   <div class="two-col">
-
-    <!-- MAPA -->
     <div class="map-zone">
       <div class="ct">Proyectos por provincia</div>
       <div class="cs">Los puntos compartidos aparecen en todas las provincias involucradas</div>
-      <!-- Para cargar tu mapa reemplazá el div.map-placeholder por:
-           <img src="tu_mapa_rigi.png" ...> o <iframe src="tu_mapa_rigi.html" ...> -->
       <div class="map-placeholder">
         <i class="ti ti-map-2"></i>
         <p>Mapa de proyectos RIGI</p>
         <code>Reemplazá por tu imagen o mapa interactivo</code>
       </div>
     </div>
-
-    <!-- RANKING + ANÁLISIS -->
     <div class="ranking-zone">
       <div>
         <div class="ct">Ranking de provincias</div>
-        <div class="cs">Por inversión comprometida · <span style="color:#00aec3">Cyan</span> = proyecto compartido entre provincias</div>
-        <!-- RANKING — reemplazá los valores — y completá con tus datos reales -->
-        <div class="ranking-list" id="ranking-list">
-          <!-- Las filas se generan por JS abajo, editá el array PROVINCIAS -->
-        </div>
+        <div class="cs">Por inversión comprometida · <span style="color:#00aec3">Cyan</span> = proyecto compartido</div>
+        <div class="ranking-list" id="ranking-list"></div>
       </div>
-
       <div>
         <div class="ct" style="margin-bottom:.5rem">Análisis</div>
-        <!-- Reemplazá el párrafo con tu análisis real -->
         <div class="analysis-box">
-          <p class="analysis-ph">Completá acá con el análisis de distribución territorial de proyectos RIGI. Por ejemplo: qué provincias concentran mayor inversión, qué sectores predominan en cada región, cómo se distribuyen los proyectos compartidos, etc.</p>
+          <p class="analysis-ph">Completá acá con el análisis de distribución territorial de proyectos RIGI.</p>
         </div>
       </div>
     </div>
-
   </div>
 
-  <!-- TABLA DE PROYECTOS -->
   <div class="sec-label">Detalle de proyectos</div>
   <div class="cw">
     <div class="ct">Proyectos adheridos al RIGI</div>
-    <div class="cs">Ordenados por monto comprometido · <span class="badge-shared">Compartido</span> indica proyectos que involucran más de una provincia</div>
+    <div class="cs">Click en cualquier fila para ver la ficha completa del proyecto · <span class="badge-shared">Compartido</span> = más de una provincia</div>
     <div style="overflow-x:auto;">
       <table class="t">
         <thead>
@@ -210,11 +212,10 @@
             <th style="min-width:120px">Sector</th>
             <th style="min-width:120px">Inversión (M USD)</th>
             <th style="min-width:100px">Estado</th>
+            <th></th>
           </tr>
         </thead>
-        <tbody id="tabla-proyectos">
-          <!-- Las filas se generan por JS abajo, editá el array PROYECTOS -->
-        </tbody>
+        <tbody id="tabla-proyectos"></tbody>
       </table>
     </div>
   </div>
@@ -226,116 +227,166 @@
   <p>4T 2025</p>
 </div>
 
+<!-- DRAWER -->
+<div class="drawer-overlay" id="overlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-header">
+    <button class="drawer-close" onclick="closeDrawer()"><i class="ti ti-x"></i></button>
+    <div class="drawer-eyebrow" id="d-sector">Sector</div>
+    <div class="drawer-title" id="d-nombre">Nombre del proyecto</div>
+  </div>
+  <div class="drawer-body">
+    <div>
+      <div class="drawer-section-label">Datos generales</div>
+      <div class="drawer-kpis">
+        <div class="drawer-kpi"><div class="drawer-kpi-l">Inversión</div><div class="drawer-kpi-v" id="d-monto">—</div></div>
+        <div class="drawer-kpi"><div class="drawer-kpi-l">Estado</div><div class="drawer-kpi-v" id="d-estado">—</div></div>
+        <div class="drawer-kpi"><div class="drawer-kpi-l">Provincia/s</div><div class="drawer-kpi-v" id="d-prov" style="font-size:13px">—</div></div>
+        <div class="drawer-kpi"><div class="drawer-kpi-l">Tipo</div><div class="drawer-kpi-v" id="d-tipo" style="font-size:13px">—</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="drawer-section-label">Descripción</div>
+      <div class="drawer-analysis ph" id="d-desc">Completá con la descripción del proyecto.</div>
+    </div>
+    <div>
+      <div class="drawer-section-label">Etiquetas</div>
+      <div class="drawer-tags" id="d-tags"></div>
+    </div>
+  </div>
+</div>
+
 <script>
 // ══════════════════════════════════════════════════════════════
-// EDITÁ ESTOS DOS ARRAYS CON TUS DATOS REALES
+// EDITÁ ESTOS ARRAYS CON TUS DATOS REALES
 // ══════════════════════════════════════════════════════════════
 
-// PROVINCIAS — ranking
-// shared: true = proyecto compartido con otra provincia
 const PROVINCIAS = [
-  { nombre: 'Neuquén',     monto: null, proyectos: null, tieneCompartido: true  },
-  { nombre: 'Santa Cruz',  monto: null, proyectos: null, tieneCompartido: false },
-  { nombre: 'Río Negro',   monto: null, proyectos: null, tieneCompartido: true  },
-  { nombre: 'Salta',       monto: null, proyectos: null, tieneCompartido: false },
-  { nombre: 'Mendoza',     monto: null, proyectos: null, tieneCompartido: false },
-  { nombre: 'Chubut',      monto: null, proyectos: null, tieneCompartido: true  },
-  { nombre: 'Jujuy',       monto: null, proyectos: null, tieneCompartido: false },
-  { nombre: 'Catamarca',   monto: null, proyectos: null, tieneCompartido: false },
+  { nombre:'Neuquén',    monto:null, proyectos:null, tieneCompartido:true  },
+  { nombre:'Santa Cruz', monto:null, proyectos:null, tieneCompartido:false },
+  { nombre:'Río Negro',  monto:null, proyectos:null, tieneCompartido:true  },
+  { nombre:'Salta',      monto:null, proyectos:null, tieneCompartido:false },
+  { nombre:'Mendoza',    monto:null, proyectos:null, tieneCompartido:false },
+  { nombre:'Chubut',     monto:null, proyectos:null, tieneCompartido:true  },
+  { nombre:'Jujuy',      monto:null, proyectos:null, tieneCompartido:false },
+  { nombre:'Catamarca',  monto:null, proyectos:null, tieneCompartido:false },
 ];
 
-// PROYECTOS — tabla
-// provincias: array de strings; si tiene más de uno, se muestra como compartido
-// sector: nombre + color (c) y fondo (bg)
-// estado: 'aprobado' | 'revision' | 'presentado'
 const PROYECTOS = [
   {
     nombre: 'Proyecto A',
-    provincias: ['Neuquén', 'Río Negro'],  // compartido
-    sector: { nombre: 'Energía', c: '#0F6E56', bg: '#e1f5ee' },
-    monto: null,
-    estado: 'aprobado'
+    provincias: ['Neuquén','Río Negro'],
+    sector: { nombre:'Energía', c:'#0F6E56', bg:'#e1f5ee' },
+    monto: null, estado:'aprobado',
+    tipo: null,        // ej: 'Renovable'
+    descripcion: null, // ej: 'Parque eólico de 300 MW...'
+    tags: ['Energía renovable','Patagonia'],
   },
   {
     nombre: 'Proyecto B',
     provincias: ['Santa Cruz'],
-    sector: { nombre: 'Minería', c: '#826993', bg: '#f3eef7' },
-    monto: null,
-    estado: 'revision'
+    sector: { nombre:'Minería', c:'#826993', bg:'#f3eef7' },
+    monto: null, estado:'revision',
+    tipo: null, descripcion: null,
+    tags: ['Litio','Sur'],
   },
   {
     nombre: 'Proyecto C',
     provincias: ['Neuquén'],
-    sector: { nombre: 'Hidrocarburos', c: '#2f6485', bg: '#e6f1fb' },
-    monto: null,
-    estado: 'aprobado'
+    sector: { nombre:'Hidrocarburos', c:'#2f6485', bg:'#e6f1fb' },
+    monto: null, estado:'aprobado',
+    tipo: null, descripcion: null,
+    tags: ['Gas','Vaca Muerta'],
   },
   {
     nombre: 'Proyecto D',
-    provincias: ['Chubut', 'Santa Cruz'],  // compartido
-    sector: { nombre: 'Energía', c: '#0F6E56', bg: '#e1f5ee' },
-    monto: null,
-    estado: 'presentado'
+    provincias: ['Chubut','Santa Cruz'],
+    sector: { nombre:'Energía', c:'#0F6E56', bg:'#e1f5ee' },
+    monto: null, estado:'presentado',
+    tipo: null, descripcion: null,
+    tags: ['Eólico','Compartido'],
   },
   {
     nombre: 'Proyecto E',
     provincias: ['Salta'],
-    sector: { nombre: 'Agro', c: '#BA7517', bg: '#fdf3e3' },
-    monto: null,
-    estado: 'revision'
+    sector: { nombre:'Agro', c:'#BA7517', bg:'#fdf3e3' },
+    monto: null, estado:'revision',
+    tipo: null, descripcion: null,
+    tags: ['Agroindustria','NOA'],
   },
   {
     nombre: 'Proyecto F',
     provincias: ['Mendoza'],
-    sector: { nombre: 'Industria', c: '#e72276', bg: '#fbeaf0' },
-    monto: null,
-    estado: 'presentado'
+    sector: { nombre:'Industria', c:'#e72276', bg:'#fbeaf0' },
+    monto: null, estado:'presentado',
+    tipo: null, descripcion: null,
+    tags: ['Cuyo','Manufactura'],
   },
 ];
 
 // ══════════════════════════════════════════════════════════════
 
-// Renderizar ranking
-const maxMonto = Math.max(...PROVINCIAS.map(p => p.monto || 0)) || 1;
-const rankingEl = document.getElementById('ranking-list');
-PROVINCIAS.forEach((p, i) => {
-  const pct = p.monto ? (p.monto / maxMonto * 100).toFixed(1) : 0;
-  const div = document.createElement('div');
-  div.className = 'ranking-row';
-  div.innerHTML = `
-    <div class="ranking-num">${i+1}</div>
-    <div class="ranking-info">
-      <div class="ranking-name">
-        ${p.nombre}
-        ${p.tieneCompartido ? '<span class="badge-shared">Compartido</span>' : ''}
-        ${p.proyectos ? `<span class="badge-ph">${p.proyectos} proy.</span>` : ''}
-      </div>
-      <div class="ranking-bar-track">
-        <div class="ranking-bar-fill" style="width:${pct}%"></div>
-      </div>
-    </div>
-    <div class="ranking-val">${p.monto ? '$'+p.monto+' M' : '—'}</div>`;
-  rankingEl.appendChild(div);
-});
-
-// Renderizar tabla
 const estadoClass = { aprobado:'status-aprobado', revision:'status-revision', presentado:'status-presentado' };
 const estadoLabel = { aprobado:'Aprobado', revision:'En revisión', presentado:'Presentado' };
-const tbody = document.getElementById('tabla-proyectos');
-PROYECTOS.forEach(p => {
-  const shared = p.provincias.length > 1;
-  const provTags = p.provincias.map(pv =>
-    `<span class="prov-tag ${shared?'shared':''}">${shared?'<i class="ti ti-link" style="font-size:9px"></i>':''} ${pv}</span>`
-  ).join('');
-  const tr = document.createElement('tr');
-  tr.innerHTML = `
+
+// Ranking
+const maxMonto = Math.max(...PROVINCIAS.map(p=>p.monto||0))||1;
+PROVINCIAS.forEach((p,i)=>{
+  const pct = p.monto?(p.monto/maxMonto*100).toFixed(1):0;
+  const div = document.createElement('div'); div.className='ranking-row';
+  div.innerHTML=`
+    <div class="ranking-num">${i+1}</div>
+    <div class="ranking-info">
+      <div class="ranking-name">${p.nombre}
+        ${p.tieneCompartido?'<span class="badge-shared">Compartido</span>':''}
+        ${p.proyectos?`<span class="badge-ph">${p.proyectos} proy.</span>`:''}
+      </div>
+      <div class="ranking-bar-track"><div class="ranking-bar-fill" style="width:${pct}%"></div></div>
+    </div>
+    <div class="ranking-val">${p.monto?'$'+p.monto+' M':'—'}</div>`;
+  document.getElementById('ranking-list').appendChild(div);
+});
+
+// Tabla
+PROYECTOS.forEach((p,idx)=>{
+  const shared=p.provincias.length>1;
+  const provTags=p.provincias.map(pv=>`<span class="prov-tag ${shared?'shared':''}">${shared?'<i class="ti ti-link" style="font-size:9px"></i> ':''} ${pv}</span>`).join('');
+  const tr=document.createElement('tr'); tr.className='clickable';
+  tr.innerHTML=`
     <td style="font-weight:500">${p.nombre}</td>
     <td>${provTags}</td>
     <td><span class="sector-tag" style="--c:${p.sector.c};--bg:${p.sector.bg}">${p.sector.nombre}</span></td>
-    <td class="${p.monto?'monto-cell':'monto-ph'}">${p.monto ? '$'+p.monto+' M' : '—'}</td>
-    <td><span class="status-tag ${estadoClass[p.estado]}">${estadoLabel[p.estado]}</span></td>`;
-  tbody.appendChild(tr);
+    <td class="${p.monto?'monto-cell':'monto-ph'}">${p.monto?'$'+p.monto+' M':'—'}</td>
+    <td><span class="status-tag ${estadoClass[p.estado]}">${estadoLabel[p.estado]}</span></td>
+    <td><span class="ver-ficha"><i class="ti ti-chevron-right"></i> Ver ficha</span></td>`;
+  tr.addEventListener('click',()=>openDrawer(idx));
+  document.getElementById('tabla-proyectos').appendChild(tr);
 });
+
+// Drawer
+function openDrawer(idx){
+  const p=PROYECTOS[idx];
+  document.getElementById('d-sector').textContent=p.sector.nombre;
+  document.getElementById('d-nombre').textContent=p.nombre;
+  document.getElementById('d-monto').textContent=p.monto?'$'+p.monto+' M':'—';
+  document.getElementById('d-estado').innerHTML=`<span class="status-tag ${estadoClass[p.estado]}">${estadoLabel[p.estado]}</span>`;
+  document.getElementById('d-prov').textContent=p.provincias.join(', ');
+  document.getElementById('d-tipo').textContent=p.tipo||'—';
+  const descEl=document.getElementById('d-desc');
+  descEl.textContent=p.descripcion||'Completá con la descripción del proyecto.';
+  descEl.className=`drawer-analysis${p.descripcion?'':' ph'}`;
+  const tagsEl=document.getElementById('d-tags');
+  tagsEl.innerHTML=p.tags.map(t=>`<span class="prov-tag">${t}</span>`).join('');
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeDrawer(){
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeDrawer(); });
 </script>
 </body>
 </html>

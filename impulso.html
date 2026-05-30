@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Impulso — Líneas de Crédito · DPDI</title>
+<meta name="description" content="Programa Impulso — Distribución territorial de créditos por partido. Ministerio de Producción, Ciencia e Innovación Tecnológica · PBA.">
+<meta name="author" content="Dirección de Promoción y Desarrollo de Inversiones · PBA">
+<meta property="og:title" content="Impulso — Líneas de Crédito · DPDI">
+<meta property="og:description" content="Distribución territorial de créditos del programa Impulso por partido de la Provincia de Buenos Aires.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta name="theme-color" content="#0f1923">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
@@ -50,6 +57,40 @@
   .map-placeholder i { font-size: 48px; }
   .map-placeholder p { font-size: 13px; }
   .map-placeholder code { font-size: 11px; background: #f5f5f0; padding: 4px 8px; border-radius: 4px; color: #999; }
+  /* COMPARADOR */
+  .comparador { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media(max-width:700px){ .comparador { grid-template-columns: 1fr; } }
+  .comparador-col { background: #fff; border: 1px solid #e8e4dc; border-radius: 12px; overflow: hidden; }
+  .comparador-col-header { padding: .75rem 1rem; background: #f7f5f0; border-bottom: 1px solid #e8e4dc; display: flex; align-items: center; justify-content: space-between; }
+  .comparador-col-label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #aaa; }
+  .comparador-col-select { font-size: 12px; border: 1px solid #e8e4dc; border-radius: 6px; padding: 4px 8px; background: #fff; color: #1a1a1a; font-family: 'DM Sans', sans-serif; cursor: pointer; }
+  .comparador-content { min-height: 500px; }
+  .comparador-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 500px; color: #ccc; gap: .75rem; }
+  .comparador-placeholder i { font-size: 40px; }
+  .comparador-placeholder p { font-size: 12px; }
+  /* KPIs comparador */
+  .comp-kpis { display: grid; grid-template-columns: repeat(2,1fr); gap: 8px; padding: 1rem; border-bottom: 1px solid #f0ede8; }
+  .comp-kpi { background: #f7f5f0; border-radius: 8px; padding: .6rem .75rem; }
+  .comp-kpi-l { font-size: 10px; color: #aaa; margin-bottom: 3px; }
+  .comp-kpi-v { font-size: 15px; font-weight: 500; color: #1a1a1a; }
+  .comp-kpi-ph { color: #ccc; font-style: italic; font-size: 12px; }
+
+  /* BOTÓN IMPRIMIR */
+  .btn-print { font-size: 11px; color: rgba(232,220,200,.4); background: none; border: 1px solid rgba(232,220,200,.15); border-radius: 6px; padding: 4px 10px; cursor: pointer; display: flex; align-items: center; gap: 5px; font-family: 'DM Sans', sans-serif; transition: all .15s; }
+  .btn-print:hover { color: rgba(232,220,200,.8); border-color: rgba(232,220,200,.35); }
+
+  /* IMPRIMIR */
+  @media print {
+    .topbar, .nav, .accent-bar, .tabs-bar, .btn-print { display: none !important; }
+    body { background: #fff; }
+    .content { padding: 0; }
+    .tab-panel { display: block !important; page-break-before: always; }
+    .tab-panel:first-child { page-break-before: avoid; }
+    .cw, .kpi-grid { break-inside: avoid; }
+    .iframe-wrap iframe { height: 400px; }
+    .bottom-strip { background: #0f1923 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
   .bottom-strip { background: #0f1923; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; margin-top: 2rem; }
   .bottom-strip p { font-size: 11px; color: rgba(232,220,200,.3); }
   .dot { color: rgba(232,220,200,.2); margin: 0 .4rem; }
@@ -59,7 +100,8 @@
 
 <div class="topbar">
   <span class="topbar-left">Ministerio de Producción, Ciencia e Innovación Tecnológica · PBA</span>
-  <div class="topbar-right">
+  <div class="topbar-right" style="display:flex;align-items:center;gap:1rem;">
+    <button class="btn-print" onclick="window.print()"><i class="ti ti-printer"></i> Imprimir</button>
     <a href="credito.html"><i class="ti ti-arrow-left"></i> Volver a Líneas de Crédito</a>
   </div>
 </div>
@@ -67,7 +109,7 @@
 <div class="nav">
   <a href="ied.html">Informe IED</a>
   <a href="credito.html" class="active">Líneas de Crédito</a>
-  <a href="#" style="opacity:.4; cursor:default;">RIGI</a>
+  <a href="rigi.html">RIGI</a>
 </div>
 
 <div class="subnav">
@@ -85,10 +127,11 @@
 
 <div class="tabs-bar">
   <span class="tabs-bar-label">Edición</span>
-  <button class="tab active" onclick="showTab('i2023', this)">2023</button>
+  <button class="tab" onclick="showTab('i2023', this)">2023</button>
   <button class="tab" onclick="showTab('i2024', this)">2024</button>
   <button class="tab" onclick="showTab('i2025', this)">2025</button>
   <button class="tab tab-total" onclick="showTab('itotal', this)">Totales</button>
+  <button class="tab" style="color:#00aec3;" onclick="showTab('icomp', this)"><i class="ti ti-layout-columns" style="font-size:12px;margin-right:3px"></i>Comparar</button>
 </div>
 
 <div class="content">
@@ -217,6 +260,36 @@
     </div>
   </div>
 
+  <!-- ── COMPARADOR ── -->
+  <div class="tab-panel" id="panel-icomp">
+    <div class="comparador">
+      <div class="comparador-col">
+        <div class="comparador-col-header">
+          <span class="comparador-col-label">Edición A</span>
+          <select class="comparador-col-select" id="sel-left" onchange="updateComp()">
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+          </select>
+        </div>
+        <div class="comp-kpis" id="kpis-left"></div>
+        <div class="comparador-content" id="content-left"></div>
+      </div>
+      <div class="comparador-col">
+        <div class="comparador-col-header">
+          <span class="comparador-col-label">Edición B</span>
+          <select class="comparador-col-select" id="sel-right" onchange="updateComp()">
+            <option value="2023">2023</option>
+            <option value="2024" selected>2024</option>
+            <option value="2025">2025</option>
+          </select>
+        </div>
+        <div class="comp-kpis" id="kpis-right"></div>
+        <div class="comparador-content" id="content-right"></div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <div class="bottom-strip">
@@ -225,12 +298,53 @@
 </div>
 
 <script>
+// ══════════════════════════════════════════════════════════
+// EDITÁ ESTOS DATOS CON LOS VALORES REALES DE CADA EDICIÓN
+// ══════════════════════════════════════════════════════════
+const EDICIONES = {
+  '2023': { creditos: null, monto: null, partido: null, promedio: null },
+  '2024': { creditos: null, monto: null, partido: null, promedio: null },
+  '2025': { creditos: null, monto: null, partido: null, promedio: null },
+};
+// ══════════════════════════════════════════════════════════
+
 function showTab(id, btn) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.getElementById('panel-' + id).classList.add('active');
   btn.classList.add('active');
+  if (id === 'icomp') updateComp();
 }
+
+function renderKpis(elId, yr) {
+  const d = EDICIONES[yr];
+  const fmt = v => v ? v : '—';
+  document.getElementById(elId).innerHTML = `
+    <div class="comp-kpi"><div class="comp-kpi-l">Créditos otorgados</div><div class="comp-kpi-v ${d.creditos?'':'comp-kpi-ph'}">${fmt(d.creditos)}</div></div>
+    <div class="comp-kpi"><div class="comp-kpi-l">Monto total</div><div class="comp-kpi-v ${d.monto?'':'comp-kpi-ph'}">${fmt(d.monto)}</div></div>
+    <div class="comp-kpi"><div class="comp-kpi-l">Partido líder</div><div class="comp-kpi-v ${d.partido?'':'comp-kpi-ph'}" style="font-size:13px">${fmt(d.partido)}</div></div>
+    <div class="comp-kpi"><div class="comp-kpi-l">Monto promedio</div><div class="comp-kpi-v ${d.promedio?'':'comp-kpi-ph'}">${fmt(d.promedio)}</div></div>`;
+}
+
+function renderContent(elId, yr) {
+  // Cuando tengas los HTMLs, reemplazá el placeholder por:
+  // el.innerHTML = `<iframe src="impulso_${yr}.html" style="width:100%;height:500px;border:none;display:block"></iframe>`;
+  const el = document.getElementById(elId);
+  el.innerHTML = `<div class="comparador-placeholder"><i class="ti ti-map-pin"></i><p>Edición ${yr} — cargá tu mapa en impulso_${yr}.html</p></div>`;
+}
+
+function updateComp() {
+  const yrL = document.getElementById('sel-left').value;
+  const yrR = document.getElementById('sel-right').value;
+  renderKpis('kpis-left', yrL);
+  renderKpis('kpis-right', yrR);
+  renderContent('content-left', yrL);
+  renderContent('content-right', yrR);
+}
+updateComp();
+
+// Activar primer tab
+document.querySelector('.tabs-bar .tab').classList.add('active');
 </script>
 </body>
 </html>
