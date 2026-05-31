@@ -43,12 +43,26 @@
   .bottom-strip { background: #0f1923; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; margin-top: auto; }
   .bottom-strip p { font-size: 11px; color: rgba(232,220,200,.3); }
   .dot { color: rgba(232,220,200,.2); margin: 0 .4rem; }
+
+  .dark-toggle { background: none; border: 1px solid rgba(232,220,200,.15); border-radius: 20px; padding: 4px 10px; cursor: pointer; color: rgba(232,220,200,.5); font-size: 11px; font-family: 'DM Sans', sans-serif; display: flex; align-items: center; gap: 5px; transition: all .15s; }
+  .dark-toggle:hover { color: rgba(232,220,200,.9); border-color: rgba(232,220,200,.4); }
+  :root { --bg:#f7f5f0; --bg2:#fff; --border:#e8e4dc; --text:#1a1a1a; --text2:#888; --text3:#aaa; }
+  [data-theme="dark"] { --bg:#0f1923; --bg2:#1a2530; --border:#243040; --text:#e8dcc8; --text2:#8a9bb0; --text3:#567; }
+  [data-theme="dark"] body { background: var(--bg); }
+  [data-theme="dark"] .card { background: var(--bg2); border-color: var(--border); }
+  [data-theme="dark"] .card-title { color: var(--text); }
+  [data-theme="dark"] .card-desc { color: var(--text2); }
+  [data-theme="dark"] .card-update { color: var(--text3); }
+  [data-theme="dark"] .card-footer { border-color: var(--border); }
+  [data-theme="dark"] .section-label { color: var(--text3); }
+  [data-theme="dark"] .content { background: var(--bg); }
 </style>
 </head>
 <body>
 
 <div class="topbar">
   <span class="topbar-left">Ministerio de Producción, Ciencia e Innovación Tecnológica · PBA</span>
+  <button class="dark-toggle" onclick="toggleDark()"><span id="dark-icon">🌙</span> Modo oscuro</button>
 </div>
 
 <div class="hero">
@@ -106,5 +120,20 @@
   <p>4T 2025</p>
 </div>
 
+<script>
+const root = document.documentElement;
+const saved = localStorage.getItem('theme') || 'light';
+root.setAttribute('data-theme', saved);
+function toggleDark() {
+  const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  document.getElementById('dark-icon').textContent = next === 'dark' ? '☀️' : '🌙';
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const icon = document.getElementById('dark-icon');
+  if (icon) icon.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+});
+</script>
 </body>
 </html>

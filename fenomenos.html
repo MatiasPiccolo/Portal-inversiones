@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fenómenos Naturales — Líneas de Crédito · DPDI</title>
+<meta name="description" content="Línea de crédito para afectados por fenómenos naturales. Ministerio de Producción, Ciencia e Innovación Tecnológica · PBA.">
+<meta name="author" content="Dirección de Promoción y Desarrollo de Inversiones · PBA">
+<meta property="og:title" content="Fenómenos Naturales — Líneas de Crédito · DPDI">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta name="theme-color" content="#0f1923">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: #f7f5f0; min-height: 100vh; }
+
+  /* MODO OSCURO */
+  :root { --bg:#f7f5f0; --bg2:#fff; --border:#e8e4dc; --border2:#f0ede8; --text:#1a1a1a; --text2:#888; --text3:#aaa; --bg-insight:#f7f5f0; }
+  [data-theme="dark"] { --bg:#0f1923; --bg2:#1a2530; --border:#243040; --border2:#1e2d3d; --text:#e8dcc8; --text2:#8a9bb0; --text3:#567; --bg-insight:#1a2530; }
+  [data-theme="dark"] body { background: var(--bg); color: var(--text); }
+  [data-theme="dark"] .page-header, [data-theme="dark"] .cw { background: var(--bg2); border-color: var(--border); }
+  [data-theme="dark"] .ct { color: var(--text); }
+  [data-theme="dark"] .cs { color: var(--text2); }
+  [data-theme="dark"] .subnav { background: var(--bg2); border-color: var(--border); }
+  [data-theme="dark"] .subnav a { color: var(--text3); }
+  [data-theme="dark"] .tabs-bar { background: var(--bg2); border-color: var(--border); }
+  [data-theme="dark"] .tab { color: var(--text3); }
+  [data-theme="dark"] .kpi-card { background: var(--bg2); border-color: var(--border); }
+  [data-theme="dark"] .kpi-label { color: var(--text3); }
+  [data-theme="dark"] .kpi-value { color: var(--text); }
+  [data-theme="dark"] .breadcrumb { background: var(--bg2); border-color: var(--border); }
+  [data-theme="dark"] .breadcrumb a { color: var(--text2); }
+  [data-theme="dark"] .breadcrumb-current { color: var(--text); }
+  [data-theme="dark"] .map-placeholder { background: #1a2530; border-color: #243040; }
+
+  .topbar { background: #0f1923; padding: .6rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+  .topbar-left { font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: rgba(232,220,200,.45); }
+  .topbar-right { display: flex; align-items: center; gap: 1rem; }
+  .topbar-right a { font-size: 12px; color: rgba(232,220,200,.5); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+  .topbar-right a:hover { color: rgba(232,220,200,.8); }
+  .btn-print { font-size: 11px; color: rgba(232,220,200,.4); background: none; border: 1px solid rgba(232,220,200,.15); border-radius: 6px; padding: 4px 10px; cursor: pointer; display: flex; align-items: center; gap: 5px; font-family: 'DM Sans', sans-serif; transition: all .15s; }
+  .btn-print:hover { color: rgba(232,220,200,.8); border-color: rgba(232,220,200,.35); }
+  .dark-toggle { background: none; border: 1px solid rgba(232,220,200,.15); border-radius: 20px; padding: 4px 10px; cursor: pointer; color: rgba(232,220,200,.5); font-size: 11px; font-family: 'DM Sans', sans-serif; display: flex; align-items: center; gap: 5px; transition: all .15s; }
+  .dark-toggle:hover { color: rgba(232,220,200,.9); border-color: rgba(232,220,200,.4); }
+
+  .nav { background: #0f1923; border-top: 1px solid rgba(232,220,200,.07); padding: 0 2rem; display: flex; }
+  .nav a { font-size: 12px; color: rgba(232,220,200,.4); text-decoration: none; padding: .75rem 1.25rem; border-bottom: 2px solid transparent; transition: all .15s; }
+  .nav a:hover { color: rgba(232,220,200,.75); }
+  .nav a.active { color: #826993; border-bottom-color: #826993; }
+
+  .subnav { background: #fff; border-bottom: 1px solid #e8e4dc; padding: 0 2rem; display: flex; }
+  .subnav a { font-size: 12px; color: #aaa; text-decoration: none; padding: .65rem 1.25rem; border-bottom: 2px solid transparent; transition: all .15s; }
+  .subnav a:hover { color: #00aec3; }
+  .subnav a.active { color: #00aec3; border-bottom-color: #00aec3; font-weight: 500; }
+
+  .accent-bar { height: 3px; background: linear-gradient(90deg, #e72276 0%, #826993 35%, #2f6485 65%, #00aec3 100%); }
+
+  .breadcrumb { background: #fff; border-bottom: 1px solid #e8e4dc; padding: .6rem 2rem; display: flex; align-items: center; gap: 0; }
+  .breadcrumb a { font-size: 12px; color: #888; text-decoration: none; transition: color .15s; }
+  .breadcrumb a:hover { color: #1a1a1a; }
+  .breadcrumb span { font-size: 12px; color: #ccc; margin: 0 .5rem; }
+  .breadcrumb-current { font-size: 12px; color: #1a1a1a; font-weight: 500; }
+
+  .page-header { background: #fff; border-bottom: 1px solid #e8e4dc; padding: 1.5rem 2rem; }
+  .page-header-eyebrow { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #00aec3; margin-bottom: .4rem; }
+  .page-header-title { font-family: 'DM Serif Display', serif; font-size: 26px; color: #1a1a1a; margin-bottom: .3rem; }
+  .page-header-sub { font-size: 13px; color: #999; }
+
+  .tabs-bar { background: #fff; border-bottom: 1px solid #e8e4dc; padding: 0 2rem; display: flex; align-items: center; }
+  .tabs-bar-label { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: #ccc; padding-right: 1rem; border-right: 1px solid #e8e4dc; margin-right: .5rem; flex-shrink: 0; }
+  .tab { font-size: 12px; color: #aaa; padding: .65rem 1.1rem; border-bottom: 2px solid transparent; cursor: pointer; transition: all .15s; border: none; background: none; font-family: 'DM Sans', sans-serif; }
+  .tab:hover { color: #00aec3; }
+  .tab.active { color: #00aec3; border-bottom: 2px solid #00aec3; font-weight: 500; }
+  .tab-total:hover { color: #826993; }
+  .tab-total.active { color: #826993; border-bottom-color: #826993; }
+
+  .content { padding: 2rem; max-width: 1100px; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 1.25rem; }
+  .kpi-card { background: #fff; border: 1px solid #e8e4dc; border-radius: 10px; padding: 1rem 1.25rem; position: relative; overflow: hidden; }
+  .kpi-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background: #00aec3; }
+  .kpi-label { font-size: 11px; color: #aaa; letter-spacing: .04em; margin-bottom: 6px; }
+  .kpi-value { font-family: 'DM Serif Display', serif; font-size: 22px; color: #1a1a1a; line-height: 1.1; margin-bottom: 3px; }
+  .kpi-value.placeholder { color: #ccc; font-style: italic; font-size: 16px; }
+  .kpi-sub { font-size: 11px; color: #bbb; }
+
+  .cw { background: #fff; border: 1px solid #e8e4dc; border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; }
+  .ct { font-size: 14px; font-weight: 500; color: #1a1a1a; margin-bottom: 3px; }
+  .cs { font-size: 12px; color: #888; margin-bottom: 1rem; }
+
+  .iframe-wrap { border-radius: 12px; overflow: hidden; border: 1px solid #e8e4dc; background: #fff; }
+  .iframe-wrap iframe { width: 100%; height: 800px; border: none; display: block; }
+  .map-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 400px; color: #ccc; gap: .75rem; background: #fff; border: 1px solid #e8e4dc; border-radius: 12px; }
+  .map-placeholder i { font-size: 48px; }
+  .map-placeholder p { font-size: 13px; }
+  .map-placeholder code { font-size: 11px; background: #f5f5f0; padding: 4px 8px; border-radius: 4px; color: #999; }
+
+  @media print {
+    .topbar, .nav, .accent-bar, .tabs-bar, .btn-print, .dark-toggle { display: none !important; }
+    body { background: #fff; }
+    .tab-panel { display: block !important; page-break-before: always; }
+    .tab-panel:first-child { page-break-before: avoid; }
+    .bottom-strip { background: #0f1923 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  .bottom-strip { background: #0f1923; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; margin-top: 2rem; }
+  .bottom-strip p { font-size: 11px; color: rgba(232,220,200,.3); }
+  .dot { color: rgba(232,220,200,.2); margin: 0 .4rem; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="topbar-left">Ministerio de Producción, Ciencia e Innovación Tecnológica · PBA</span>
+  <div class="topbar-right">
+    <button class="dark-toggle" onclick="toggleDark()"><span id="dark-icon">🌙</span> Modo oscuro</button>
+    <button class="btn-print" onclick="window.print()"><i class="ti ti-printer"></i> Imprimir</button>
+    <a href="credito.html">← Volver a Líneas de Crédito</a>
+  </div>
+</div>
+
+<div class="nav">
+  <a href="ied.html">Informe IED</a>
+  <a href="credito.html" class="active">Líneas de Crédito</a>
+  <a href="rigi.html">RIGI</a>
+</div>
+
+<div class="subnav">
+  <a href="impulso.html">Impulso</a>
+  <a href="emprende.html">Emprendé</a>
+  <a href="fenomenos.html" class="active">Fenómenos Naturales</a>
+</div>
+
+<div class="accent-bar"></div>
+
+<div class="breadcrumb">
+  <a href="index.html">🏠 Portal</a>
+  <span>›</span>
+  <a href="credito.html">Líneas de Crédito</a>
+  <span>›</span>
+  <span class="breadcrumb-current">Fenómenos Naturales</span>
+</div>
+
+<div class="page-header">
+  <div class="page-header-eyebrow">Líneas de Crédito · Fenómenos Naturales</div>
+  <div class="page-header-title">Fenómenos Naturales</div>
+  <div class="page-header-sub">Línea de crédito para afectados por fenómenos naturales · Provincia de Buenos Aires</div>
+</div>
+
+<div class="tabs-bar">
+  <span class="tabs-bar-label">Edición</span>
+  <button class="tab active" onclick="showTab('fn2025', this)">2025</button>
+  <button class="tab tab-total" onclick="showTab('fntotal', this)">Totales</button>
+</div>
+
+<div class="content">
+
+  <!-- ── EDICIÓN 2025 ── -->
+  <div class="tab-panel active" id="panel-fn2025">
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Créditos otorgados</div>
+        <!-- Reemplazá — por el valor real -->
+        <div class="kpi-value placeholder">—</div>
+        <div class="kpi-sub">Edición 2025</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monto total</div>
+        <div class="kpi-value placeholder">—</div>
+        <div class="kpi-sub">En pesos</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Partido líder</div>
+        <div class="kpi-value placeholder">—</div>
+        <div class="kpi-sub">Mayor cantidad de créditos</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monto promedio</div>
+        <div class="kpi-value placeholder">—</div>
+        <div class="kpi-sub">Por crédito otorgado</div>
+      </div>
+    </div>
+    <!-- Reemplazá el map-placeholder por:
+         <div class="iframe-wrap"><iframe src="fenomenos_2025.html"></iframe></div> -->
+    <div class="map-placeholder">
+      <i class="ti ti-cloud-storm"></i>
+      <p>Mapa / Dashboard — Edición 2025</p>
+      <code>&lt;div class="iframe-wrap"&gt;&lt;iframe src="fenomenos_2025.html"&gt;&lt;/iframe&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+
+  <!-- ── TOTALES ── -->
+  <div class="tab-panel" id="panel-fntotal">
+    <div class="kpi-grid">
+      <div class="kpi-card" style="border-top-color:#826993">
+        <div class="kpi-label">Créditos totales</div>
+        <div class="kpi-value placeholder">—</div>
+        <div class="kpi-sub">Todas las ediciones</div>
+      </div>
+      <div class="kpi-card" style="border-top-color:#826993">
+        <div class="kpi-label">Monto total acumulado</div>
+        <div class="kpi-value placeholder">—</div>
+        <div class="kpi-sub">En pesos</div>
+      </div>
+      <div class="kpi-card" style="border-top-color:#826993">
+        <div class="kpi-label">Partido líder histórico</div>
+        <div class="kpi-value placeholder">—</div>
+        <div class="kpi-sub">Mayor cantidad acumulada</div>
+      </div>
+      <div class="kpi-card" style="border-top-color:#826993">
+        <div class="kpi-label">Monto promedio</div>
+        <div class="kpi-value placeholder">—</div>
+        <div class="kpi-sub">Por crédito histórico</div>
+      </div>
+    </div>
+    <div class="map-placeholder">
+      <i class="ti ti-chart-bar"></i>
+      <p>Dashboard de totales — Fenómenos Naturales</p>
+      <code>&lt;div class="iframe-wrap"&gt;&lt;iframe src="fenomenos_totales.html"&gt;&lt;/iframe&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+
+</div>
+
+<div class="bottom-strip">
+  <p>Dirección de Promoción y Desarrollo de Inversiones <span class="dot">·</span> Subsecretaría de Desarrollo Comercial y Promoción de Inversiones <span class="dot">·</span> PBA</p>
+  <p>4T 2025</p>
+</div>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// Modo oscuro
+const root = document.documentElement;
+const saved = localStorage.getItem('theme') || 'light';
+root.setAttribute('data-theme', saved);
+function toggleDark() {
+  const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  document.getElementById('dark-icon').textContent = next === 'dark' ? '☀️' : '🌙';
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const icon = document.getElementById('dark-icon');
+  if (icon) icon.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+});
+</script>
+</body>
+</html>

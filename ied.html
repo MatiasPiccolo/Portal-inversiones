@@ -122,6 +122,77 @@
   .bottom-strip { background: #0f1923; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
   .bottom-strip p { font-size: 11px; color: rgba(232,220,200,.3); }
   .dot { color: rgba(232,220,200,.2); margin: 0 .4rem; }
+
+  /* MODO OSCURO */
+  :root {
+    --bg: #f7f5f0; --bg2: #fff; --border: #e8e4dc; --border2: #f0ede8;
+    --text: #1a1a1a; --text2: #888; --text3: #aaa;
+    --bg-insight: #f7f5f0; --bg-kpi: #f7f5f0;
+  }
+  [data-theme="dark"] {
+    --bg: #0f1923; --bg2: #1a2530; --border: #243040; --border2: #1e2d3d;
+    --text: #e8dcc8; --text2: #8a9bb0; --text3: #567;
+    --bg-insight: #1a2530; --bg-kpi: #1a2530;
+  }
+  [data-theme="dark"] body { background: var(--bg); color: var(--text); }
+  [data-theme="dark"] .page-header,
+  [data-theme="dark"] .cw,
+  [data-theme="dark"] .map-zone,
+  [data-theme="dark"] .ranking-zone,
+  [data-theme="dark"] .sector-tab,
+  [data-theme="dark"] .comparador-col { background: var(--bg2); border-color: var(--border); }
+  [data-theme="dark"] .ct { color: var(--text); }
+  [data-theme="dark"] .cs { color: var(--text2); }
+  [data-theme="dark"] .sec-label { color: var(--text3); }
+  [data-theme="dark"] .insight { background: var(--bg-insight); }
+  [data-theme="dark"] .insight-ti { color: var(--text); }
+  [data-theme="dark"] .insight-tx { color: var(--text2); }
+  [data-theme="dark"] table.t th { color: var(--text2); border-bottom-color: var(--border); }
+  [data-theme="dark"] table.t td { color: var(--text); border-bottom-color: var(--border2); }
+  [data-theme="dark"] table.t tr.clickable:hover td { background: #1e2d3d; }
+  [data-theme="dark"] .s-label { color: var(--text2); }
+  [data-theme="dark"] .s-track { background: #1e2d3d; }
+  [data-theme="dark"] .s-yr { color: var(--text3); }
+  [data-theme="dark"] .kpi-card { background: var(--bg2); border-color: var(--border); }
+  [data-theme="dark"] .kpi-label { color: var(--text3); }
+  [data-theme="dark"] .kpi-value { color: var(--text); }
+  [data-theme="dark"] .kpi-sub { color: var(--text3); }
+  [data-theme="dark"] .card { background: var(--bg2); border-color: var(--border); }
+  [data-theme="dark"] .card-title { color: var(--text); }
+  [data-theme="dark"] .card-desc { color: var(--text2); }
+  [data-theme="dark"] .subnav { background: var(--bg2); border-color: var(--border); }
+  [data-theme="dark"] .subnav a { color: var(--text3); }
+  [data-theme="dark"] .tabs-bar { background: var(--bg2); border-color: var(--border); }
+  [data-theme="dark"] .tab { color: var(--text3); }
+  [data-theme="dark"] .comparador-col-header { background: #1a2530; border-color: var(--border); }
+  [data-theme="dark"] .comparador-col-select { background: #1a2530; color: var(--text); border-color: var(--border); }
+  [data-theme="dark"] .comp-kpi { background: #1e2d3d; }
+  [data-theme="dark"] .comp-kpi-l { color: var(--text3); }
+  [data-theme="dark"] .comp-kpi-v { color: var(--text); }
+  [data-theme="dark"] .map-placeholder { background: #1a2530; border-color: #243040; }
+  [data-theme="dark"] .analysis-box { background: #1a2530; }
+  [data-theme="dark"] .analysis-box p { color: var(--text2); }
+  [data-theme="dark"] .ranking-bar-track { background: #1e2d3d; }
+  [data-theme="dark"] .drawer { background: #1a2530; }
+  [data-theme="dark"] .drawer-kpi { background: #1e2d3d; }
+  [data-theme="dark"] .drawer-kpi-l { color: var(--text3); }
+  [data-theme="dark"] .drawer-kpi-v { color: var(--text); }
+  [data-theme="dark"] .drawer-analysis { background: #1e2d3d; color: var(--text2); }
+  [data-theme="dark"] .breadcrumb { background: #1a2530; border-color: #243040; }
+  [data-theme="dark"] .breadcrumb a { color: #8a9bb0; }
+  [data-theme="dark"] .breadcrumb span { color: #567; }
+  [data-theme="dark"] .breadcrumb-current { color: var(--text); }
+
+  /* BREADCRUMB */
+  .breadcrumb { background: #fff; border-bottom: 1px solid #e8e4dc; padding: .6rem 2rem; display: flex; align-items: center; gap: 0; }
+  .breadcrumb a { font-size: 12px; color: #888; text-decoration: none; transition: color .15s; }
+  .breadcrumb a:hover { color: #1a1a1a; }
+  .breadcrumb span { font-size: 12px; color: #ccc; margin: 0 .5rem; }
+  .breadcrumb-current { font-size: 12px; color: #1a1a1a; font-weight: 500; }
+
+  /* TOGGLE MODO OSCURO */
+  .dark-toggle { background: none; border: 1px solid rgba(232,220,200,.15); border-radius: 20px; padding: 4px 10px; cursor: pointer; color: rgba(232,220,200,.5); font-size: 11px; font-family: 'DM Sans', sans-serif; display: flex; align-items: center; gap: 5px; transition: all .15s; }
+  .dark-toggle:hover { color: rgba(232,220,200,.9); border-color: rgba(232,220,200,.4); }
 </style>
 </head>
 <body>
@@ -129,7 +200,7 @@
 <div class="topbar">
   <span class="topbar-left">Ministerio de Producción, Ciencia e Innovación Tecnológica · PBA</span>
   <div class="topbar-right">
-    <a href="index.html"><i class="ti ti-arrow-left"></i> Volver al portal</a>
+    <a href="index.html">🏠 Volver al portal</a>
   </div>
 </div>
 <div class="nav">
@@ -138,6 +209,7 @@
   <a href="#" style="opacity:.4;cursor:default;">RIGI</a>
 </div>
 <div class="accent-bar"></div>
+<div class="breadcrumb"><a href="index.html">🏠 Portal</a><span>›</span><span class="breadcrumb-current">Informe IED</span></div>
 
 <div class="page-header">
   <div class="page-header-eyebrow">Inversión Extranjera Directa · 4T 2025</div>
@@ -489,6 +561,23 @@ const container=document.getElementById('sector-bars-ind');
     bars.appendChild(br);
   });
   row.appendChild(lbl);row.appendChild(bars);container.appendChild(row);
+});
+</script>
+
+<script>
+// Modo oscuro
+const root = document.documentElement;
+const saved = localStorage.getItem('theme') || 'light';
+root.setAttribute('data-theme', saved);
+function toggleDark() {
+  const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  document.getElementById('dark-icon').textContent = next === 'dark' ? '☀️' : '🌙';
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const icon = document.getElementById('dark-icon');
+  if (icon) icon.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
 });
 </script>
 </body>
