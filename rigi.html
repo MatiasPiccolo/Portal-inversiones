@@ -369,14 +369,14 @@
 // ══════════════════════════════════════════════════════════════
 
 const PROVINCIAS = [
-  { nombre:'Neuquén',    monto:11.848, proyectos:6, tieneCompartido:true  },
-  { nombre:'Buenos Aires', monto:3.231, proyectos:5, tieneCompartido:true  },
+  { nombre:'Neuquén',    monto:11848, proyectos:6, tieneCompartido:true  },
+  { nombre:'Buenos Aires', monto:3231, proyectos:5, tieneCompartido:true  },
   { nombre:'Santa Fe', monto:327, proyectos:2, tieneCompartido:false },
-  { nombre:'Río Negro',  monto:19.061, proyectos:5, tieneCompartido:true  },
-  { nombre:'Salta',      monto:8.520, proyectos:5, tieneCompartido:false },
+  { nombre:'Río Negro',  monto:19061, proyectos:5, tieneCompartido:true  },
+  { nombre:'Salta',      monto:8520, proyectos:5, tieneCompartido:false },
   { nombre:'Santiago del Estero', monto:50, proyectos:1, tieneCompartido:true  },
-  { nombre:'Jujuy',      monto:2.392, proyectos:2, tieneCompartido:false },
-  { nombre:'Catamarca',  monto:9.855, proyectos:7, tieneCompartido:false },
+  { nombre:'Jujuy',      monto:2392, proyectos:2, tieneCompartido:false },
+  { nombre:'Catamarca',  monto:9855, proyectos:7, tieneCompartido:false },
   { nombre:'Chaco',  monto:50, proyectos:1, tieneCompartido:false },
   { nombre:'La Pampa',  monto:672, proyectos:2, tieneCompartido:false },
   { nombre:'Mendoza',  monto:841, proyectos:2, tieneCompartido:false },
@@ -385,13 +385,13 @@ const PROVINCIAS = [
 
 const PROYECTOS = [
   {
-    nombre: 'Proyecto A',
-    provincias: ['Neuquén','Río Negro'],
-    sector: { nombre:'Energía', c:'#0F6E56', bg:'#e1f5ee' },
-    monto: null, estado:'aprobado',
+    nombre: 'Proyecto Siderúrgico Argentino SIDERSA',
+    provincias: ['Buenos Aires'],
+    sector: { nombre:'Industria', c:'#e72276', bg:'#fbeaf0' },
+    monto: 286, estado:'aprobado',
     tipo: null,        // ej: 'Renovable'
-    descripcion: null, // ej: 'Parque eólico de 300 MW...'
-    tags: ['Energía renovable','Patagonia'],
+    descripcion: 'Se estima que la planta producirá más de 360.000 toneladas anuales de acero y unos 300 empleos. La planta comenzaría a operar en 2038. Desde la empresa sostienen que el proyecto generará 300 empleos directos y hasta 3500 indirectos en sectores como la recolección de chatarra y la construcción.',
+    tags: ['Acero','PBA'],
   },
   {
     nombre: 'Proyecto B',
