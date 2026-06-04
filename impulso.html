@@ -394,10 +394,22 @@ function renderKpis(elId, yr) {
 }
 
 function renderContent(elId, yr) {
-  // Cuando tengas los HTMLs, reemplazá el placeholder por:
-  // el.innerHTML = `<iframe src="impulso_${yr}.html" style="width:100%;height:500px;border:none;display:block"></iframe>`;
   const el = document.getElementById(elId);
-  el.innerHTML = `<div class="comparador-placeholder"><i class="ti ti-map-pin"></i><p>Edición ${yr} — cargá tu mapa en impulso_${yr}.html</p></div>`;
+  
+  // Mapeamos el año al archivo correspondiente que ya estás usando en las pestañas
+  let mapaSrc = '';
+  if (yr === '2023') mapaSrc = 'mapa_general_interactivo_impulso1.html';
+  else if (yr === '2024') mapaSrc = 'mapa_general_interactivo_impulso2.html';
+  else if (yr === '2025') mapaSrc = 'mapa_general_interactivo_impulso3b.html';
+
+  // Si el año es válido, renderiza el iframe real con el mapa
+  if (mapaSrc) {
+    el.innerHTML = `<div class="iframe-wrap" style="border-radius:0; border:none; border-top:1px solid var(--border);">
+      <iframe src="${mapaSrc}" style="width:100%; height:500px; border:none; display:block;"></iframe>
+    </div>`;
+  } else {
+    el.innerHTML = `<div class="comparador-placeholder"><i class="ti ti-map-pin"></i><p>Edición ${yr} — Archivo no encontrado</p></div>`;
+  }
 }
 
 function updateComp() {
