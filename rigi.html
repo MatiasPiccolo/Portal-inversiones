@@ -40,13 +40,19 @@
   .page-header-title { font-family: 'Encode Sans', sans-serif; font-size: 28px; color: #1a1a1a; margin-bottom: .3rem; }
   .page-header-sub { font-size: 13px; color: #999; }
 
+ /* NUEVO BLOQUE MODIFICADO PARA LOS TAMAÑOS */
   .mast { background: #0f1923; margin: 1.5rem 2rem; border-radius: 12px; padding: 1.5rem 2rem; position: relative; overflow: hidden; font-family: 'Encode Sans', sans-serif; color: #ffffff; }
   .mast::before { content:''; position:absolute; top:-60px; right:-60px; width:300px; height:300px; border:1px solid rgba(232,220,200,.05); border-radius:50%; pointer-events:none; }
   .mast-label { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #ffffff; margin-bottom: .75rem; }
   .mast-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
   .kpi { background: rgba(255,255,255,.06); border-radius: 8px; padding: .75rem 1rem; }
-  .kpi-l { font-size: 11px; color: #ffffff; margin-bottom: 4px; opacity: 0.8; }
-  .kpi-v { font-size: 22px; font-weight: 600; color: #ffffff; font-style: normal; }
+ 
+  /* 1. Títulos de arriba: Subidos de 11px a 13px y con un grosor medio para que se lean mejor */
+  .kpi-l { font-size: 14px; font-weight: 500; color: #ffffff; margin-bottom: 6px; opacity: 0.9; }
+  
+  /* 2. Números: Bajados un punto (de 22px a 21px) */
+  .kpi-v { font-size: 20px; font-weight: 600; color: #ffffff; font-style: normal; }
+ 
   .kpi-ph { font-style: normal; } /* Anula la itálica nativa de esta clase */
   .kpi-d { font-size: 11px; margin-top: 3px; color: #ffffff; opacity: 0.8; }
 
