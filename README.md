@@ -11,7 +11,6 @@ Este repositorio contiene informes, visualizaciones interactivas de los crédito
 - [Líneas de Crédito](https://matiaspiccolo.github.io/Portal-inversiones/credito.html)
 - [RIGI](https://matiaspiccolo.github.io/Portal-inversiones/rigi.html)
 - [Mapa RIGI](https://matiaspiccolo.github.io/Portal-inversiones/mapa_interactivo_RIGI_detallado.html.html)
-- 
 
 ## 📂 Archivos incluidos
 
