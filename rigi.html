@@ -15,18 +15,18 @@
 <meta name="theme-color" content="#0f1923">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'DM Sans', sans-serif; background: #f7f5f0; min-height: 100vh; }
+  body { font-family: 'Encode Sans', sans-serif; background: #f7f5f0; min-height: 100vh; }
 
   .topbar { background: #0f1923; padding: .6rem 2rem; display: flex; align-items: center; justify-content: space-between; }
   .topbar-left { font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: rgba(232,220,200,.45); }
   .topbar-right { display: flex; align-items: center; gap: 1rem; }
   .topbar-right a { font-size: 12px; color: rgba(232,220,200,.5); text-decoration: none; display: flex; align-items: center; gap: 6px; }
   .topbar-right a:hover { color: rgba(232,220,200,.8); }
-  .btn-print { font-size: 11px; color: rgba(232,220,200,.4); background: none; border: 1px solid rgba(232,220,200,.15); border-radius: 6px; padding: 4px 10px; cursor: pointer; display: flex; align-items: center; gap: 5px; font-family: 'DM Sans', sans-serif; transition: all .15s; }
+  .btn-print { font-size: 11px; color: rgba(232,220,200,.4); background: none; border: 1px solid rgba(232,220,200,.15); border-radius: 6px; padding: 4px 10px; cursor: pointer; display: flex; align-items: center; gap: 5px; font-family: 'Encode Sans', sans-serif; transition: all .15s; }
   .btn-print:hover { color: rgba(232,220,200,.8); border-color: rgba(232,220,200,.35); }
 
   .nav { background: #0f1923; border-top: 1px solid rgba(232,220,200,.07); padding: 0 2rem; display: flex; }
@@ -37,7 +37,7 @@
 
   .page-header { background: #fff; border-bottom: 1px solid #e8e4dc; padding: 1.5rem 2rem; }
   .page-header-eyebrow { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #00aec3; margin-bottom: .4rem; }
-  .page-header-title { font-family: 'DM Serif Display', serif; font-size: 28px; color: #1a1a1a; margin-bottom: .3rem; }
+  .page-header-title { font-family: 'Encode Sans', sans-serif; font-size: 28px; color: #1a1a1a; margin-bottom: .3rem; }
   .page-header-sub { font-size: 13px; color: #999; }
 
   .mast { background: #0f1923; margin: 1.5rem 2rem; border-radius: 12px; padding: 1.5rem 2rem; position: relative; overflow: hidden; }
@@ -107,7 +107,7 @@
   .drawer-close { position: absolute; top: 1rem; right: 1rem; background: rgba(255,255,255,.1); border: none; border-radius: 6px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #e8dcc8; font-size: 16px; transition: background .15s; }
   .drawer-close:hover { background: rgba(255,255,255,.2); }
   .drawer-eyebrow { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: #00aec3; margin-bottom: .4rem; }
-  .drawer-title { font-family: 'DM Serif Display', serif; font-size: 22px; color: #e8dcc8; line-height: 1.2; margin-bottom: .5rem; }
+  .drawer-title { font-family: 'Encode Sans', sans-serif; font-size: 22px; color: #e8dcc8; line-height: 1.2; margin-bottom: .5rem; }
   .drawer-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 1.25rem; }
   .drawer-section-label { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: #aaa; margin-bottom: .5rem; }
   .drawer-kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -125,14 +125,14 @@
   .filtros-label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #aaa; margin-right: 4px; flex-shrink: 0; }
   .filtro-select { font-size: 12px; border: 1px solid #e8e4dc; border-radius: 20px; padding: 4px 12px; background: #fff; color: #1a1a1a; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: border-color .15s; appearance: none; padding-right: 24px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23aaa' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 8px center; }
   .filtro-select:focus { outline: none; border-color: #00aec3; }
-  .filtro-reset { font-size: 11px; color: #aaa; background: none; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; text-decoration: underline; padding: 0; }
+  .filtro-reset { font-size: 11px; color: #aaa; background: none; border: none; cursor: pointer; font-family: 'Encode Sans', sans-serif; text-decoration: underline; padding: 0; }
   .filtro-reset:hover { color: #e72276; }
   .filtros-count { font-size: 11px; color: #aaa; margin-left: auto; }
   [data-theme="dark"] .filtro-select { background-color: #1a2530; color: var(--text); border-color: var(--border); }
   [data-theme="dark"] .filtros-count { color: var(--text3); }
 
   /* EXPORTAR PDF */
-  .btn-export { font-size: 11px; color: #00aec3; background: #e0f7fa; border: 1px solid #b2ebf2; border-radius: 6px; padding: 6px 12px; cursor: pointer; display: flex; align-items: center; gap: 5px; font-family: 'DM Sans', sans-serif; transition: all .15s; margin-top: auto; }
+  .btn-export { font-size: 11px; color: #00aec3; background: #e0f7fa; border: 1px solid #b2ebf2; border-radius: 6px; padding: 6px 12px; cursor: pointer; display: flex; align-items: center; gap: 5px; font-family: 'Encode Sans', sans-serif; transition: all .15s; margin-top: auto; }
   .btn-export:hover { background: #b2ebf2; }
   [data-theme="dark"] .btn-export { background: #1a2d35; border-color: #00aec340; }
 
@@ -221,7 +221,7 @@
   .breadcrumb-current { font-size: 12px; color: #1a1a1a; font-weight: 500; }
 
   /* TOGGLE MODO OSCURO */
-  .dark-toggle { background: none; border: 1px solid rgba(232,220,200,.15); border-radius: 20px; padding: 4px 10px; cursor: pointer; color: rgba(232,220,200,.5); font-size: 11px; font-family: 'DM Sans', sans-serif; display: flex; align-items: center; gap: 5px; transition: all .15s; }
+  .dark-toggle { background: none; border: 1px solid rgba(232,220,200,.15); border-radius: 20px; padding: 4px 10px; cursor: pointer; color: rgba(232,220,200,.5); font-size: 11px; font-family: 'Encode Sans', sans-serif; display: flex; align-items: center; gap: 5px; transition: all .15s; }
   .dark-toggle:hover { color: rgba(232,220,200,.9); border-color: rgba(232,220,200,.4); }
 </style>
 </head>
