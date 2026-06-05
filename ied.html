@@ -325,6 +325,20 @@
     <div class="cw">
       <div class="ct">Flujo trimestral — Minería</div>
       <div class="cs">Evolución de los principales proyectos extractivos · Millones de USD</div>
+
+      
+  <!-- FILTROS PARA GRÁFICO DE LÍNEA: INDUSTRIA MINERIA -->
+     
+     <div class="filters">
+  <div class="filters-label">Filtrar Actividades Mineras</div>
+  <div class="chips" id="chips-mineria">
+    <button class="chip chip-ctrl" onclick="toggleAllMineria(true)">Mostrar todas</button>
+    <button class="chip chip-ctrl" onclick="toggleAllMineria(false)">Ocultar todas</button>
+  </div>
+</div>
+
+      <!------------------------------------------------------>
+     
       <div class="leg">
         <span class="leg-i"><span class="leg-line" style="background:#826993"></span>Litio y Potasio</span>
         <span class="leg-i"><span class="leg-line" style="background:#BA7517"></span>Oro y Plata</span>
@@ -583,62 +597,83 @@ const container=document.getElementById('sector-bars-ind');
   row.appendChild(lbl);row.appendChild(bars);container.appendChild(row);
 });
 
- // ── GRÁFICO LÍNEAS MINERÍA ────────────────────────────────
-// Categorías Destacadas (Líneas con color propio)
+// ── GRÁFICO LÍNEAS MINERÍA CON FILTROS ────────────────────
 const MINERIA_HIGHLIGHTED = [
-  {label:'Extracción de petróleo crudo y gas natural', data:[500, 550, 600, 650, 700, 720, 680, 710, 750, 800, 850, 900], color:'#BA7517'},
-  {label:'Extracción de minerales metalíferos',        data:[400, 420, 390, 410, 380, 350, 310, 290, 300, 320, 340, 360], color:'#826993'},
-  {label:'Total Minería',                             data:[1040, 1112, 1125, 1198, 1214, 1199, 1115, 1133, 1181, 1272, 1330, 1424], color:'#e72276', dashed:true}
+  {id: 0, label:'Extracción de petróleo crudo y gas natural', data:[500, 550, 600, 650, 700, 720, 680, 710, 750, 800, 850, 900], color:'#BA7517'},
+  {id: 1, label:'Extracción de minerales metalíferos',        data:[400, 420, 390, 410, 380, 350, 310, 290, 300, 320, 340, 360], color:'#826993'},
+  {id: 2, label:'Total Minería',                             data:[1040, 1112, 1125, 1198, 1214, 1199, 1115, 1133, 1181, 1272, 1330, 1424], color:'#e72276', dashed:true}
 ];
 
-// Categorías Secundarias (Líneas grises de fondo para no saturar el gráfico)
 const MINERIA_GREY = [
-  {label:'Explotación de minas y canteras ncp',        data:[10, 12, 15, 13, 14, 11, 15, 12, 11, 14, 13, 15]},
-  {label:'Servicios de apoyo para la minería',        data:[100, 105, 95, 100, 98, 93, 87, 96, 94, 108, 97, 114]},
-  {label:'Extracción de carbón y lignito',            data:[30, 25, 25, 25, 22, 25, 23, 25, 26, 30, 30, 35]}
+  {id: 3, label:'Explotación de minas y canteras ncp',        data:[10, 12, 15, 13, 14, 11, 15, 12, 11, 14, 13, 15]},
+  {id: 4, label:'Servicios de apoyo para la minería',        data:[100, 105, 95, 100, 98, 93, 87, 96, 94, 108, 97, 114]},
+  {id: 5, label:'Extracción de carbón y lignito',            data:[30, 25, 25, 25, 22, 25, 23, 25, 26, 30, 30, 35]}
 ];
 
-// Función que empaqueta ambos grupos (Gris + Color) con sus estilos visuales
+// Unimos todas las categorías en una sola lista para controlar el filtro
+const ALL_MINERIA = [...MINERIA_HIGHLIGHTED, ...MINERIA_GREY];
+// Estado de visibilidad inicial: todas las líneas empiezan encendidas (true)
+const visMineria = ALL_MINERIA.map(() => true);
+
+// Generar los botones (chips) dinámicamente en el HTML
+const chipsMineriaContainer = document.getElementById('chips-mineria');
+ALL_MINERIA.forEach((s, idx) => {
+  const btn = document.createElement('button');
+  // Si no tiene color asignado (los grises), le damos el color por defecto de la app
+  const btnColor = s.color || '#999';
+  btn.className = 'chip on'; 
+  btn.style.cssText = `--c:${btnColor}`;
+  btn.textContent = s.label;
+  
+  btn.addEventListener('click', () => {
+    visMineria[idx] = !visMineria[idx]; 
+    btn.className = `chip ${visMineria[idx] ? 'on' : 'off'}`;
+    updateMineriaChart(); // Actualiza el gráfico al hacer clic
+  });
+  chipsMineriaContainer.appendChild(btn);
+});
+
+// Funciones controladoras para los botones de "Mostrar todas" y "Ocultar todas"
+function toggleAllMineria(on) { 
+  visMineria.fill(on); 
+  document.querySelectorAll('#chips-mineria .chip:not(.chip-ctrl)').forEach((b) => b.className = `chip ${on ? 'on' : 'off'}`); 
+  updateMineriaChart(); 
+}
+
+// Función modificada para construir las líneas DEPENDIENDO de si están activas en el filtro
 function buildLinesMineria() {
   const ds = [];
-  const greyColorMineria = 'rgba(180,178,169,0.35)'; // Gris sutil idéntico al resto de la app
+  const greyColorMineria = 'rgba(180,178,169,0.35)';
   
-  // 1. Procesar primero los sectores grises
-  MINERIA_GREY.forEach((s) => ds.push({
-    label: s.label,
-    data: s.data,
-    borderColor: greyColorMineria,
-    backgroundColor: 'transparent',
-    borderWidth: 1.2,
-    pointRadius: 1.5,
-    pointBackgroundColor: greyColorMineria,
-    pointBorderColor: 'transparent',
-    tension: 0.35
-  }));
-  
-  // 2. Procesar los sectores destacados arriba de los grises
-  MINERIA_HIGHLIGHTED.forEach((s) => ds.push({
-    label: s.label,
-    data: s.data,
-    borderColor: s.color,
-    backgroundColor: 'transparent',
-    borderWidth: 2.5,
-    borderDash: s.dashed ? [6, 4] : [],
-    pointRadius: 3.5,
-    pointBackgroundColor: s.color,
-    pointBorderColor: '#fff',
-    pointBorderWidth: 1.5,
-    tension: 0.35
-  }));
+  ALL_MINERIA.forEach((s, idx) => {
+    // Si el chip está apagado (false), no agregamos la línea al gráfico
+    if (!visMineria[idx]) return;
+
+    const isHighlighted = s.color ? true : false;
+    
+    ds.push({
+      label: s.label,
+      data: s.data,
+      borderColor: isHighlighted ? s.color : greyColorMineria,
+      backgroundColor: 'transparent',
+      borderWidth: isHighlighted ? 2.5 : 1.2,
+      borderDash: s.dashed ? [6, 4] : [],
+      pointRadius: isHighlighted ? 3.5 : 1.5,
+      pointBackgroundColor: isHighlighted ? s.color : greyColorMineria,
+      pointBorderColor: isHighlighted ? '#fff' : 'transparent',
+      pointBorderWidth: isHighlighted ? 1.5 : 0,
+      tension: 0.35
+    });
+  });
   
   return ds;
 }
 
-// Inicialización del objeto gráfico en el Canvas
+// Inicializar el gráfico de Minería
 const mineriaLineChart = new Chart(document.getElementById('cLinesMineria'), {
   type: 'line',
   data: {
-    labels: qLabels, // Reutiliza los trimestres T1...T4 de la configuración global
+    labels: qLabels,
     datasets: buildLinesMineria()
   },
   options: {
@@ -646,7 +681,7 @@ const mineriaLineChart = new Chart(document.getElementById('cLinesMineria'), {
     maintainAspectRatio: false,
     interaction: { mode: 'nearest', intersect: true },
     plugins: {
-      legend: { display: false }, // Las referencias se manejan arriba con HTML nativo
+      legend: { display: false },
       tooltip: {
         backgroundColor: 'rgba(15,25,35,0.92)',
         titleColor: '#e8dcc8',
@@ -665,6 +700,12 @@ const mineriaLineChart = new Chart(document.getElementById('cLinesMineria'), {
     }
   }
 });
+
+// Función clave: recarga los datasets y redibuja el gráfico animado
+function updateMineriaChart() {
+  mineriaLineChart.data.datasets = buildLinesMineria();
+  mineriaLineChart.update();
+}
  
 </script>
 
