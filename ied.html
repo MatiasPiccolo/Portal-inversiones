@@ -326,28 +326,14 @@
       <div class="ct">Flujo trimestral — Minería</div>
       <div class="cs">Evolución de los principales proyectos extractivos · Millones de USD</div>
 
-      
-  <!-- FILTROS PARA GRÁFICO DE LÍNEA: INDUSTRIA MINERIA -->
-          
-      <div class="filters">
-        <div class="filters-label">Sectores destacados</div>
-        <div class="chips" id="chips-h"></div>
-      </div>
-<div class="filters">
-  <div class="filters-label">Filtrar Actividades Mineras</div>
-  <div class="chips" id="chips-mineria"></div>
-</div>
-          <button class="chip chip-ctrl" onclick="toggleAllG(true)">Mostrar todos</button>
-          <button class="chip chip-ctrl" onclick="toggleAllG(false)">Ocultar todos</button>
-        </div>
-      </div>
+      <!-- FILTROS PARA GRÁFICO DE LÍNEA: MINERÍA -->
+      <div id="chips-mineria"></div>
 
-      <!------------------------------------------------------>
-     
       <div class="leg">
-        <span class="leg-i"><span class="leg-line" style="background:#826993"></span>Litio y Potasio</span>
-        <span class="leg-i"><span class="leg-line" style="background:#BA7517"></span>Oro y Plata</span>
+        <span class="leg-i"><span class="leg-line" style="background:#BA7517"></span>Extracción de petróleo crudo y gas natural</span>
+        <span class="leg-i"><span class="leg-line" style="background:#826993"></span>Extracción de minerales metalíferos</span>
         <span class="leg-i"><span class="leg-dash" style="border-color:#e72276"></span>Total Minería</span>
+        <span class="leg-i"><span class="leg-line" style="background:#ccc;height:1.5px"></span>Otros</span>
       </div>
       <div style="position:relative;width:100%;height:360px;"><canvas id="cLinesMineria"></canvas></div>
     </div>
@@ -647,7 +633,7 @@ const mineriaLineChart = new Chart(document.getElementById('cLinesMineria'), {
         mode: 'nearest', intersect: true,
         callbacks: {
           title: c => { const i = c[0].dataIndex; return (i < 4 ? '2023' : i < 8 ? '2024' : '2025') + ' · ' + c[0].label; },
-          label: c => ' ' + c.dataset.label + ': ' + (c.raw < 0 ? '−' : '') + '$' + Math.abs(c.raw).toFixed(1) + ' M'
+          label: c => ' ' + c.dataset.label + ': ' + (c.raw < 0 ? '−' : '') + '$' + Math.abs(c.raw).toFixed(0) + ' M'
         },
         backgroundColor: 'rgba(15,25,35,0.92)', titleColor: '#e8dcc8', bodyColor: 'rgba(232,220,200,.85)', borderColor: 'rgba(232,220,200,.12)', borderWidth: 1, padding: 10, displayColors: false
       }
@@ -678,14 +664,10 @@ if (chipsMineriaContainer) {
   const divOtros = document.createElement('div');
   divOtros.style.cssText = 'display:flex; flex-wrap:wrap; gap:6px; width:100%; margin-top:4px;';
   divOtros.innerHTML = `
-    <div style="font-size:10px; color:#aaa; width:100%; font-weight:500; text-transform:uppercase; margin-bottom:6px; display:flex; gap:8px;">
-      Otros Sectores
-      <span style="color:#ddd; font-weight:300;">|</span>
-      <span style="color:#2f6485; cursor:pointer; text-transform:none; font-weight:400;" onclick="toggleAllMineriaG(true)">Mostrar todo</span>
-      <span style="color:#ddd; font-weight:300;">|</span>
-      <span style="color:#2f6485; cursor:pointer; text-transform:none; font-weight:400;" onclick="toggleAllMineriaG(false)">Ocultar todo</span>
-    </div>
-    <div id="mineria-g-lista" style="display:flex; flex-wrap:wrap; gap:6px; width:100%;"></div>
+    <div style="font-size:10px; color:#aaa; width:100%; font-weight:500; text-transform:uppercase; margin-bottom:6px;">Otros Sectores</div>
+    <button class="chip chip-ctrl" onclick="toggleAllMineriaG(true)">Mostrar todos</button>
+    <button class="chip chip-ctrl" onclick="toggleAllMineriaG(false)">Ocultar todos</button>
+    <div id="mineria-g-lista" style="display:flex; flex-wrap:wrap; gap:6px; width:100%; margin-top:2px;"></div>
   `;
   
   const listaOtros = divOtros.querySelector('#mineria-g-lista');
