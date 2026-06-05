@@ -329,12 +329,9 @@
       
   <!-- FILTROS PARA GRÁFICO DE LÍNEA: INDUSTRIA MINERIA -->
      
-     <div class="filters">
+<div class="filters">
   <div class="filters-label">Filtrar Actividades Mineras</div>
-  <div class="chips" id="chips-mineria">
-    <button class="chip chip-ctrl" onclick="toggleAllMineria(true)">Mostrar todas</button>
-    <button class="chip chip-ctrl" onclick="toggleAllMineria(false)">Ocultar todas</button>
-  </div>
+  <div class="chips" id="chips-mineria"></div>
 </div>
 
       <!------------------------------------------------------>
@@ -622,12 +619,23 @@ if (chipsMineriaContainer) {
   divDestacados.style.cssText = 'display:flex; flex-wrap:wrap; gap:6px; width:100%; margin-bottom:8px;';
   divDestacados.innerHTML = '<div style="font-size:10px; color:#aaa; width:100%; font-weight:500; text-transform:uppercase; margin-bottom:2px;">Sectores Destacados</div>';
 
-  // 2. Crear subsección para otros sectores
+  // 2. CREAR SUBSECCIÓN PARA OTROS SECTORES
   const divOtros = document.createElement('div');
-  divOtros.style.cssText = 'display:flex; flex-wrap:wrap; gap:6px; width:100%; margin-top:4px;';
-  divOtros.innerHTML = '<div style="font-size:10px; color:#aaa; width:100%; font-weight:500; text-transform:uppercase; margin-bottom:2px;">Otros Sectores</div>';
+  divOtros.style.cssText = 'display:flex; flex-wrap:wrap; gap:6px; width:100%; margin-top:12px; align-items: center;';
+  
+  // Estructura interna de Otros Sectores con un contenedor para sus botones y otro para los de control
+  divOtros.innerHTML = `
+    <div style="font-size:10px; color:#aaa; width:100%; font-weight:500; text-transform:uppercase; margin-bottom:2px;">Otros Sectores</div>
+    <div id="mineria-otros-chips-lista" style="display:flex; flex-wrap:wrap; gap:6px;"></div>
+    <div style="display:flex; gap:6px; margin-left:auto; padding-left:10px;">
+      <button class="chip chip-ctrl" style="font-size:10px; padding:3px 8px;" onclick="toggleAllMineria(true)">Mostrar todas</button>
+      <button class="chip chip-ctrl" style="font-size:10px; padding:3px 8px;" onclick="toggleAllMineria(false)">Ocultar todas</button>
+    </div>
+  `;
 
-  // 3. Recorrer y ubicar cada chip
+  // 3. RECORRER Y UBICAR CADA CHIP EN SU LUGAR
+  const listaOtros = divOtros.querySelector('#mineria-otros-chips-lista');
+
   ALL_MINERIA.forEach((s, idx) => {
     const btn = document.createElement('button');
     const isHighlighted = s.color ? true : false;
@@ -646,10 +654,11 @@ if (chipsMineriaContainer) {
     if (isHighlighted) {
       divDestacados.appendChild(btn);
     } else {
-      divOtros.appendChild(btn);
+      listaOtros.appendChild(btn); // Los grises van a la sub-lista interna de Otros
     }
   });
 
+  // Inyectar todo organizado al contenedor de la página
   chipsMineriaContainer.appendChild(divDestacados);
   chipsMineriaContainer.appendChild(divOtros);
 }
