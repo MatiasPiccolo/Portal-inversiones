@@ -610,17 +610,29 @@ const MINERIA_GREY = [
   {id: 5, label:'Extracción de carbón y lignito',            data:[30, 25, 25, 25, 22, 25, 23, 25, 26, 30, 30, 35]}
 ];
 
-// Unimos todas las categorías en una sola lista para controlar el filtro
+// ── CONFIGURACIÓN DE VISIBILIDAD DE FILTROS ────────────────
+// Unimos ambos arreglos para mantener el índice de control del gráfico
 const ALL_MINERIA = [...MINERIA_HIGHLIGHTED, ...MINERIA_GREY];
-// Estado de visibilidad inicial: todas las líneas empiezan encendidas (true)
 const visMineria = ALL_MINERIA.map(() => true);
 
-// Generar los botones (chips) dinámicamente en el HTML
 const chipsMineriaContainer = document.getElementById('chips-mineria');
+
+// 1. CREAR SUBSECCIÓN PARA DESTACADOS
+const divDestacados = document.createElement('div');
+divDestacados.style.cssText = 'display:flex; flex-wrap:wrap; gap:6px; width:100%; margin-bottom:8px;';
+divDestacados.innerHTML = '<div style="font-size:10px; color:#aaa; width:100%; font-weight:500; text-transform:uppercase; margin-bottom:2px;">Sectores Destacados</div>';
+
+// 2. CREAR SUBSECCIÓN PARA OTROS SECTORES
+const divOtros = document.createElement('div');
+divOtros.style.cssText = 'display:flex; flex-wrap:wrap; gap:6px; width:100%; margin-top:4px;';
+divOtros.innerHTML = '<div style="font-size:10px; color:#aaa; width:100%; font-weight:500; text-transform:uppercase; margin-bottom:2px;">Otros Sectores</div>';
+
+// 3. RECORRER Y UBICAR CADA CHIP EN SU LUGAR CORRESPONDIENTE
 ALL_MINERIA.forEach((s, idx) => {
   const btn = document.createElement('button');
-  // Si no tiene color asignado (los grises), le damos el color por defecto de la app
-  const btnColor = s.color || '#999';
+  const isHighlighted = s.color ? true : false;
+  const btnColor = s.color || '#999'; // Si es gris, el chip se apaga en gris oscuro por defecto
+  
   btn.className = 'chip on'; 
   btn.style.cssText = `--c:${btnColor}`;
   btn.textContent = s.label;
@@ -628,22 +640,20 @@ ALL_MINERIA.forEach((s, idx) => {
   btn.addEventListener('click', () => {
     visMineria[idx] = !visMineria[idx]; 
     btn.className = `chip ${visMineria[idx] ? 'on' : 'off'}`;
-    updateMineriaChart(); // Actualiza el gráfico al hacer clic
+    updateMineriaChart();
   });
-  chipsMineriaContainer.appendChild(btn);
+
+  // Si tiene color va a "Destacados", si no, va a "Otros"
+  if (isHighlighted) {
+    divDestacados.appendChild(btn);
+  } else {
+    divOtros.appendChild(btn);
+  }
 });
 
-// Funciones controladoras para los botones de "Mostrar todas" y "Ocultar todas"
-function toggleAllMineria(on) { 
-  visMineria.fill(on); 
-  document.querySelectorAll('#chips-mineria .chip:not(.chip-ctrl)').forEach((b) => b.className = `chip ${on ? 'on' : 'off'}`); 
-  updateMineriaChart(); 
-}
-
-// Función modificada para construir las líneas DEPENDIENDO de si están activas en el filtro
-function buildLinesMineria() {
-  const ds = [];
-  const greyColorMineria = 'rgba(180,178,169,0.35)';
+// Inyectar ambos grupos organizados dentro del contenedor principal de la página
+chipsMineriaContainer.appendChild(divDestacados);
+chipsMineriaContainer.appendChild(divOtros);
   
   ALL_MINERIA.forEach((s, idx) => {
     // Si el chip está apagado (false), no agregamos la línea al gráfico
