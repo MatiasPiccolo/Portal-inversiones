@@ -614,56 +614,27 @@ const MINERIA_GREY = [
   {label:'Extracción de carbón y lignito',            data:[30, 25, 25, 25, 22, 25, 23, 25, 26, 30, 30, 35]}
 ];
 
-// Estados de visibilidad iniciales (Grises empiezan apagados como en Industria)
+// Estados de visibilidad iniciales
 const visMineriaH = MINERIA_HIGHLIGHTED.map(() => true);
 const visMineriaG = MINERIA_GREY.map(() => false);
 const greyColorMineria = 'rgba(180,178,169,0.4)';
 
+// Función constructora limpia
 function buildLinesMineria() {
   const ds = [];
   
-  // 1. Cargar sectores grises
   MINERIA_GREY.forEach((s, i) => ds.push({
-    label: s.label,
-    data: s.data,
-    borderColor: greyColorMineria,
-    backgroundColor: 'transparent',
-    borderWidth: 1,
-    pointRadius: 2,
-    pointBackgroundColor: greyColorMineria,
-    pointBorderColor: greyColorMineria,
-    pointHoverRadius: 5,
-    pointHoverBackgroundColor: 'rgba(180,178,169,0.85)',
-    pointHoverBorderColor: '#fff',
-    pointHoverBorderWidth: 1.5,
-    tension: 0.35,
-    hidden: !visMineriaG[i] // Control de ocultamiento inicial
+    label: s.label, data: s.data, borderColor: greyColorMineria, backgroundColor: 'transparent', borderWidth: 1, pointRadius: 2, pointBackgroundColor: greyColorMineria, pointBorderColor: greyColorMineria, pointHoverRadius: 5, pointHoverBackgroundColor: 'rgba(180,178,169,0.85)', pointHoverBorderColor: '#fff', pointHoverBorderWidth: 1.5, tension: 0.35, hidden: !visMineriaG[i]
   }));
   
-  // 2. Cargar sectores destacados
   MINERIA_HIGHLIGHTED.forEach((s, i) => ds.push({
-    label: s.label,
-    data: s.data,
-    borderColor: s.color,
-    backgroundColor: 'transparent',
-    borderWidth: 2.5,
-    borderDash: s.dashed ? [6, 4] : [],
-    pointRadius: 3.5,
-    pointBackgroundColor: s.color,
-    pointBorderColor: '#fff',
-    pointBorderWidth: 1.5,
-    pointHoverRadius: 6,
-    pointHoverBackgroundColor: s.color,
-    pointHoverBorderColor: '#fff',
-    pointHoverBorderWidth: 2,
-    tension: 0.35,
-    hidden: !visMineriaH[i] // Control de ocultamiento inicial
+    label: s.label, data: s.data, borderColor: s.color, backgroundColor: 'transparent', borderWidth: 2.5, borderDash: s.dashed ? [6, 4] : [], pointRadius: 3.5, pointBackgroundColor: s.color, pointBorderColor: '#fff', pointBorderWidth: 1.5, pointHoverRadius: 6, pointHoverBackgroundColor: s.color, pointHoverBorderColor: '#fff', pointHoverBorderWidth: 2, tension: 0.35, hidden: !visMineriaH[i]
   }));
   
   return ds;
 }
 
-// Inicializar gráfico Chart.js
+// Inicialización del gráfico apuntando a su canvas 'cLinesMineria'
 const mineriaLineChart = new Chart(document.getElementById('cLinesMineria'), {
   type: 'line',
   data: { labels: qLabels, datasets: buildLinesMineria() },
@@ -687,7 +658,7 @@ const mineriaLineChart = new Chart(document.getElementById('cLinesMineria'), {
   }
 });
 
-// Función de actualización por índice (Clon exacto de updateLines)
+// Función actualizadora corregida
 function updateLinesMineria() {
   const ds = mineriaLineChart.data.datasets;
   MINERIA_GREY.forEach((_, i) => { ds[i].hidden = !visMineriaG[i]; });
@@ -695,16 +666,14 @@ function updateLinesMineria() {
   mineriaLineChart.update();
 }
 
-// Renderizar la interfaz de filtros dinámicos en el contenedor contenedor principal
+// Generación de Chips Dinámicos (Usa el contenedor unificado 'chips-mineria' que creamos mediante JS)
 const chipsMineriaContainer = document.getElementById('chips-mineria');
 
 if (chipsMineriaContainer) {
-  // Contenedor Destacados
   const divDestacados = document.createElement('div');
   divDestacados.style.cssText = 'display:flex; flex-wrap:wrap; gap:6px; width:100%; margin-bottom:12px;';
   divDestacados.innerHTML = '<div style="font-size:10px; color:#aaa; width:100%; font-weight:500; text-transform:uppercase; margin-bottom:2px;">Sectores Destacados</div>';
   
-  // Contenedor Otros Sectores con los comandos de texto idénticos a Industria
   const divOtros = document.createElement('div');
   divOtros.style.cssText = 'display:flex; flex-wrap:wrap; gap:6px; width:100%; margin-top:4px;';
   divOtros.innerHTML = `
@@ -720,7 +689,6 @@ if (chipsMineriaContainer) {
   
   const listaOtros = divOtros.querySelector('#mineria-g-lista');
 
-  // Inyectar Chips Destacados (.chip-col con punto de color)
   MINERIA_HIGHLIGHTED.forEach((s, i) => {
     const chip = document.createElement('span'); chip.className = 'chip chip-col';
     chip.style.cssText = `--c:${s.color};--bg:${s.color}18`;
@@ -733,7 +701,6 @@ if (chipsMineriaContainer) {
     divDestacados.appendChild(chip);
   });
 
-  // Inyectar Chips Grises (.chip-grey que arrancan apagados con la clase 'off')
   MINERIA_GREY.forEach((s, i) => {
     const chip = document.createElement('span'); chip.className = 'chip chip-grey off';
     chip.innerHTML = `<span class="chip-dot"></span>${s.label}`;
@@ -749,12 +716,13 @@ if (chipsMineriaContainer) {
   chipsMineriaContainer.appendChild(divOtros);
 }
 
-// Controlador de Mostrar/Ocultar del subgrupo gris
+// Controlador maestro para el "Mostrar/Ocultar todo" de las grises
 function toggleAllMineriaG(on) {
   MINERIA_GREY.forEach((_, i) => visMineriaG[i] = on);
   document.querySelectorAll('#mineria-g-lista .chip-grey').forEach(c => c.classList.toggle('off', !on));
-  updateLinesMineria();
+  updateLinesMineria(); 
 }
+ 
 </script>
 
 <script>
