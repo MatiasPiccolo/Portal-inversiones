@@ -353,17 +353,48 @@
   <!-- PANELS PRÓXIMAMENTE -->
  
   <div class="sector-panel" id="panel-comercio">
-    <div class="soon-panel">
-      <i class="ti ti-tools"></i>
-      <p>Análisis de Comercio</p>
-      <span>Próximamente disponible</span>
+    <div class="cw">
+      <div class="ct">Flujo trimestral — Comercio</div>
+      <div class="cs">Seleccioná subsectores para comparar · Millones de USD</div>
+      <div id="chips-comercio"></div>
+      <div class="leg">
+        <span class="leg-i"><span class="leg-line" style="background:#00aec3"></span>Comercio al por mayor</span>
+        <span class="leg-i"><span class="leg-line" style="background:#2f6485"></span>Comercio al por menor</span>
+        <span class="leg-i"><span class="leg-line" style="background:#826993"></span>Vehículos automotores</span>
+        <span class="leg-i"><span class="leg-dash" style="border-color:#e72276"></span>Total comercio</span>
+      </div>
+      <div style="position:relative;width:100%;height:360px;"><canvas id="cLinesComercio"></canvas></div>
+    </div>
+    <div class="three">
+      <div class="insight"><div class="insight-ti">Caída del comercio mayorista</div><p class="insight-tx">El comercio al por mayor, motor del sector en 2023 con USD 2.608 B, registra desinversión neta en 2024 (−USD 446 M), arrastrado por una contracción sostenida desde el T2.</p></div>
+      <div class="insight"><div class="insight-ti">Recuperación parcial en 2025</div><p class="insight-tx">El total sectorial retorna a terreno positivo en 2025 (USD 358 M), aunque el T4 vuelve a mostrar salidas de capital que moderan el resultado anual.</p></div>
+      <div class="insight"><div class="insight-ti">Automotores en retirada</div><p class="insight-tx">La venta y reparación de vehículos acumula desinversión por dos años consecutivos (2024–2025), reflejando la caída de la demanda interna.</p></div>
+    </div>
+    <div class="out">
+      <div class="out-l">Análisis · Comercio · 2023–2025</div>
+      <p class="out-p">El sector comercio exhibe una marcada reversión respecto al pico de 2023. El comercio al por mayor concentra la volatilidad: lidera las entradas en 2023 y explica casi en su totalidad la caída de 2024. El segmento minorista y de automotores aportan flujos pequeños pero consistentemente negativos en el período reciente. La recuperación de 2025 es frágil y concentrada en el primer semestre.</p>
     </div>
   </div>
   <div class="sector-panel" id="panel-bancos">
-    <div class="soon-panel">
-      <i class="ti ti-tools"></i>
-      <p>Análisis de Bancos</p>
-      <span>Próximamente disponible</span>
+    <div class="cw">
+      <div class="ct">Flujo trimestral — Bancos y finanzas</div>
+      <div class="cs">Seleccioná subsectores para comparar · Millones de USD</div>
+      <div id="chips-bancos"></div>
+      <div class="leg">
+        <span class="leg-i"><span class="leg-line" style="background:#e72276"></span>Sociedades captadoras de depósitos</span>
+        <span class="leg-i"><span class="leg-line" style="background:#2f6485"></span>Otros intermediarios financieros</span>
+        <span class="leg-i"><span class="leg-line" style="background:#826993"></span>Auxiliares financieros</span>
+      </div>
+      <div style="position:relative;width:100%;height:360px;"><canvas id="cLinesBancos"></canvas></div>
+    </div>
+    <div class="three">
+      <div class="insight"><div class="insight-ti">Bancos dominan el sector</div><p class="insight-tx">Las sociedades captadoras de depósitos concentran más del 95% del flujo sectorial. Su pico en 2024 (USD 5.006 B) convierte a Bancos en el sector líder del año.</p></div>
+      <div class="insight"><div class="insight-ti">Caída pronunciada en 2025</div><p class="insight-tx">Los depósitos bancarios reciben solo USD 1.523 B en 2025, una contracción del 70% respecto al año anterior, aunque mantienen el liderazgo sectorial anual.</p></div>
+      <div class="insight"><div class="insight-ti">Otros intermediarios repuntan</div><p class="insight-tx">Luego de desinversión neta en 2024, los otros intermediarios financieros revierten tendencia con fuerza en 2025, acumulando USD 896 M en el año.</p></div>
+    </div>
+    <div class="out">
+      <div class="out-l">Análisis · Bancos y finanzas · 2023–2025</div>
+      <p class="out-p">El sector financiero es el más estable del período, sostenido por el flujo constante hacia las sociedades captadoras de depósitos. El ciclo 2023–2024 marca el pico de inversión bancaria, con una normalización pronunciada en 2025. Los auxiliares financieros muestran alta volatilidad con valores absolutos acotados. El segmento de otros intermediarios ofrece la señal más positiva hacia el final del período.</p>
     </div>
   </div>
   <div class="sector-panel" id="panel-servicios">
@@ -389,8 +420,8 @@ const qLabels = ['T1','T2','T3','T4','T1','T2','T3','T4','T1','T2','T3','T4'];
 const TABS = [
   { id:'industria', label:'Industria manufacturera', tag:'Disponible',   val:'$9.314 B (2023)', c:'#2f6485', bg:'#e6f1fb', soon:false },
   { id:'mineria',   label:'Minería',                 tag:'Disponible', val:'$4.921 B (2024)', c:'#826993', bg:'#f3eef7', soon:false  },
-  { id:'comercio',  label:'Comercio',                tag:'Próximamente', val:'$2.983 B (2023)', c:'#00aec3', bg:'#e0f7fa', soon:true  },
-  { id:'bancos',    label:'Bancos',                  tag:'Próximamente', val:'$5.006 B (2024)', c:'#e72276', bg:'#fbeaf0', soon:true  },
+  { id:'comercio',  label:'Comercio',                tag:'Disponible',   val:'$2.983 B (2023)', c:'#00aec3', bg:'#e0f7fa', soon:false },
+  { id:'bancos',    label:'Bancos y finanzas',       tag:'Disponible',   val:'$5.006 B (2024)', c:'#e72276', bg:'#fbeaf0', soon:false },
   { id:'servicios', label:'Serv. profesionales',     tag:'Próximamente', val:'$564 M (2023)',   c:'#BA7517', bg:'#fdf3e3', soon:true  },
 ];
 
@@ -590,15 +621,15 @@ const container=document.getElementById('sector-bars-ind');
 
 // ── GRÁFICO LÍNEAS MINERÍA ────────────────────────────────
 const MINERIA_HIGHLIGHTED = [
-  {label:'Extracción de petróleo crudo y gas natural', data:[415, 323, 224, 91, 256, 384, 613, 1151, 415, -1034, 142, -81], color:'#2f6485'},
-  {label:'Explotación de minas y canteras ncp',        data:[319, 265, 383, 86, 400, 550, 349, 455, 341, 520, 534, 271],color:'#00aec3'},
-  {label:'Extracción de minerales metalíferos',        data:[26, 230, 105, 181, 260, 349, 114, -37, 9, 10, -430, -21], color:'#826993'},
-  {label:'Total Minería',                             data:[863, 576, 776, 529, 1114, 1349, 1133, 1325, 798, -485, 206, 156], color:'#e72276', dashed:true},
+  {label:'Extracción de petróleo crudo y gas natural', data:[500, 550, 600, 650, 700, 720, 680, 710, 750, 800, 850, 900], color:'#BA7517'},
+  {label:'Extracción de minerales metalíferos',        data:[400, 420, 390, 410, 380, 350, 310, 290, 300, 320, 340, 360], color:'#826993'},
+  {label:'Total Minería',                             data:[1040, 1112, 1125, 1198, 1214, 1199, 1115, 1133, 1181, 1272, 1330, 1424], color:'#e72276', dashed:true}
 ];
 
 const MINERIA_GREY = [
-  {label:'Servicios de apoyo para la minería',        data:[104, -242, 61, 170, 196, 65, 57, -244, 33, 18, -38, -13]},
-  {label:'Extracción de carbón y lignito',            data:[-1, 1, 2, 2, 2, 0, -1, 0, 0, 0, -2, 0]}
+  {label:'Explotación de minas y canteras ncp',        data:[10, 12, 15, 13, 14, 11, 15, 12, 11, 14, 13, 15]},
+  {label:'Servicios de apoyo para la minería',        data:[100, 105, 95, 100, 98, 93, 87, 96, 94, 108, 97, 114]},
+  {label:'Extracción de carbón y lignito',            data:[30, 25, 25, 25, 22, 25, 23, 25, 26, 30, 30, 35]}
 ];
 
 // Estados de visibilidad iniciales
@@ -706,6 +737,148 @@ function toggleAllMineriaG(on) {
   updateLinesMineria(); 
 }
  
+</script>
+
+
+<script>
+// ── GRÁFICO LÍNEAS COMERCIO ───────────────────────────────
+const COMERCIO_HIGHLIGHTED = [
+  { label: 'Comercio al por mayor',  data: [364.38,780.80,696.33,766.85,488.00,-147.12,-176.65,-610.66,314.99,415.28,207.99,-634.60], color: '#00aec3' },
+  { label: 'Comercio al por menor',  data: [  10.00,  0.53, 27.56, 93.72,  -5.06, -13.51,  -5.44, -46.17, 33.47, 45.48, 49.70, -16.64], color: '#2f6485' },
+  { label: 'Vehículos automotores',  data: [  30.56, 52.90, 82.96, 76.79,  19.31, -33.14,  40.74, -67.57,-21.98,-37.36,-35.22,  37.34], color: '#826993' },
+  { label: 'Total comercio',         data: [ 404.93,834.22,806.86,937.36, 502.25,-193.77,-141.35,-724.40,326.49,423.40,222.47,-613.90], color: '#e72276', dashed: true },
+];
+
+const visComerciH = COMERCIO_HIGHLIGHTED.map(() => true);
+
+function buildLinesComercio() {
+  return COMERCIO_HIGHLIGHTED.map((s, i) => ({
+    label: s.label, data: s.data, borderColor: s.color, backgroundColor: 'transparent',
+    borderWidth: 2.5, borderDash: s.dashed ? [6,4] : [], pointRadius: 3.5,
+    pointBackgroundColor: s.color, pointBorderColor: '#fff', pointBorderWidth: 1.5,
+    pointHoverRadius: 6, pointHoverBackgroundColor: s.color, pointHoverBorderColor: '#fff',
+    pointHoverBorderWidth: 2, tension: 0.35, hidden: !visComerciH[i]
+  }));
+}
+
+const comercioLineChart = new Chart(document.getElementById('cLinesComercio'), {
+  type: 'line',
+  data: { labels: qLabels, datasets: buildLinesComercio() },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'nearest', intersect: true },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        mode: 'nearest', intersect: true,
+        callbacks: {
+          title: c => { const i = c[0].dataIndex; return (i<4?'2023':i<8?'2024':'2025') + ' · ' + ['T1','T2','T3','T4'][i%4]; },
+          label: c => ' ' + c.dataset.label + ': ' + (c.raw<0?'−':'') + '$' + Math.abs(c.raw).toFixed(0) + ' M'
+        },
+        backgroundColor: 'rgba(15,25,35,0.92)', titleColor: '#e8dcc8', bodyColor: 'rgba(232,220,200,.85)',
+        borderColor: 'rgba(232,220,200,.12)', borderWidth: 1, padding: 10, displayColors: false
+      }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 11 }, color: '#888', maxRotation: 0 } },
+      y: { grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { font: { size: 11 }, color: '#888', callback: v => (v<0?'−$':'$') + Math.abs(v/1000).toFixed(1) + 'B' } }
+    }
+  }
+});
+
+function updateLinesComercio() {
+  COMERCIO_HIGHLIGHTED.forEach((_, i) => { comercioLineChart.data.datasets[i].hidden = !visComerciH[i]; });
+  comercioLineChart.update();
+}
+
+const chipsComerciContainer = document.getElementById('chips-comercio');
+if (chipsComerciContainer) {
+  const divDestacados = document.createElement('div');
+  divDestacados.style.cssText = 'display:flex; flex-wrap:wrap; gap:6px; width:100%; margin-bottom:12px;';
+  divDestacados.innerHTML = '<div style="font-size:10px; color:#aaa; width:100%; font-weight:500; text-transform:uppercase; margin-bottom:2px;">Sectores Destacados</div>';
+  COMERCIO_HIGHLIGHTED.forEach((s, i) => {
+    const chip = document.createElement('span'); chip.className = 'chip chip-col';
+    chip.style.cssText = `--c:${s.color};--bg:${s.color}18`;
+    chip.innerHTML = `<span class="chip-dot" style="background:${s.color}"></span>${s.label}`;
+    chip.addEventListener('click', () => {
+      visComerciH[i] = !visComerciH[i];
+      chip.classList.toggle('off', !visComerciH[i]);
+      updateLinesComercio();
+    });
+    divDestacados.appendChild(chip);
+  });
+  chipsComerciContainer.appendChild(divDestacados);
+}
+</script>
+
+<script>
+// ── GRÁFICO LÍNEAS BANCOS Y FINANZAS ─────────────────────
+const BANCOS_HIGHLIGHTED = [
+  { label: 'Sociedades captadoras de depósitos', data: [1214.79,1151.44,1465.43,1640.31,2453.59,898.42,870.59,783.16,619.08,152.88,327.59,423.53], color: '#e72276' },
+  { label: 'Otros intermediarios financieros',   data: [   18.38,  -3.55,  34.78,  67.40,-135.24,-74.42, 11.78,-187.12,136.45,105.78,284.77,368.97], color: '#2f6485' },
+  { label: 'Auxiliares financieros',             data: [   -9.90, 291.97, -26.18,  -2.80,  -0.49,-16.59,-17.53, -58.16, 19.11, 15.11, -4.76,  6.44], color: '#826993' },
+];
+
+const visBancosH = BANCOS_HIGHLIGHTED.map(() => true);
+
+function buildLinesBancos() {
+  return BANCOS_HIGHLIGHTED.map((s, i) => ({
+    label: s.label, data: s.data, borderColor: s.color, backgroundColor: 'transparent',
+    borderWidth: 2.5, pointRadius: 3.5,
+    pointBackgroundColor: s.color, pointBorderColor: '#fff', pointBorderWidth: 1.5,
+    pointHoverRadius: 6, pointHoverBackgroundColor: s.color, pointHoverBorderColor: '#fff',
+    pointHoverBorderWidth: 2, tension: 0.35, hidden: !visBancosH[i]
+  }));
+}
+
+const bancosLineChart = new Chart(document.getElementById('cLinesBancos'), {
+  type: 'line',
+  data: { labels: qLabels, datasets: buildLinesBancos() },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'nearest', intersect: true },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        mode: 'nearest', intersect: true,
+        callbacks: {
+          title: c => { const i = c[0].dataIndex; return (i<4?'2023':i<8?'2024':'2025') + ' · ' + ['T1','T2','T3','T4'][i%4]; },
+          label: c => ' ' + c.dataset.label + ': ' + (c.raw<0?'−':'') + '$' + Math.abs(c.raw).toFixed(0) + ' M'
+        },
+        backgroundColor: 'rgba(15,25,35,0.92)', titleColor: '#e8dcc8', bodyColor: 'rgba(232,220,200,.85)',
+        borderColor: 'rgba(232,220,200,.12)', borderWidth: 1, padding: 10, displayColors: false
+      }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 11 }, color: '#888', maxRotation: 0 } },
+      y: { grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { font: { size: 11 }, color: '#888', callback: v => (v<0?'−$':'$') + Math.abs(v/1000).toFixed(1) + 'B' } }
+    }
+  }
+});
+
+function updateLinesBancos() {
+  BANCOS_HIGHLIGHTED.forEach((_, i) => { bancosLineChart.data.datasets[i].hidden = !visBancosH[i]; });
+  bancosLineChart.update();
+}
+
+const chipsBancosContainer = document.getElementById('chips-bancos');
+if (chipsBancosContainer) {
+  const divDestacados = document.createElement('div');
+  divDestacados.style.cssText = 'display:flex; flex-wrap:wrap; gap:6px; width:100%; margin-bottom:12px;';
+  divDestacados.innerHTML = '<div style="font-size:10px; color:#aaa; width:100%; font-weight:500; text-transform:uppercase; margin-bottom:2px;">Sectores Destacados</div>';
+  BANCOS_HIGHLIGHTED.forEach((s, i) => {
+    const chip = document.createElement('span'); chip.className = 'chip chip-col';
+    chip.style.cssText = `--c:${s.color};--bg:${s.color}18`;
+    chip.innerHTML = `<span class="chip-dot" style="background:${s.color}"></span>${s.label}`;
+    chip.addEventListener('click', () => {
+      visBancosH[i] = !visBancosH[i];
+      chip.classList.toggle('off', !visBancosH[i]);
+      updateLinesBancos();
+    });
+    divDestacados.appendChild(chip);
+  });
+  chipsBancosContainer.appendChild(divDestacados);
+}
 </script>
 
 <script>
