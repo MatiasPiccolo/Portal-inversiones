@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RIGI — Dirección de Promoción y Desarrollo de Inversiones</title>
 
-<!-- META TAGS -->
 <meta name="description" content="Régimen de Incentivos para Grandes Inversiones. Proyectos adheridos por provincia y sector. Ministerio de Producción, Ciencia e Innovación Tecnológica · PBA.">
 <meta name="author" content="Dirección de Promoción y Desarrollo de Inversiones · PBA">
 <meta property="og:title" content="RIGI — Dirección de Promoción y Desarrollo de Inversiones">
@@ -61,7 +60,7 @@
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
   @media(max-width:700px){ .two-col { grid-template-columns: 1fr; } }
 
-/* RECUADRO DEL MAPA AGRANDADO DIRECTAMENTE */
+  /* RECUADRO DEL MAPA AGRANDADO DE FORMA EFECTIVA */
   .map-zone { 
     background: #fff; 
     border: 1px solid #e8e4dc; 
@@ -69,16 +68,18 @@
     padding: 1.25rem; 
     display: flex; 
     flex-direction: column; 
-    height: auto; /* Permite que la caja se estire según lo grande que sea el mapa */
+    height: 680px; /* Forzamos la caja externa a ser alta para albergar todo cómodamente */
   }
   .map-container { 
     width: 100%; 
     margin-top: .5rem; 
     overflow: hidden; 
+    flex: 1;
   }
   .map-container iframe {
     display: block;
     width: 100%;
+    height: 100%;
     border: 0;
   }
   
@@ -104,7 +105,7 @@
   table.t td { padding: 8px 8px 8px 0; border-bottom: .5px solid #f0ede8; color: #1a1a1a; vertical-align: middle; }
   table.t tr:last-child td { border-bottom: none; }
   table.t tr.clickable:hover td { background: #f0f9fb; cursor: pointer; }
-  .prov-tag { display: inline-flex; align-items: center; gap: 3px; background: #f0ede8; color: #888; font-size: 10px; padding: 2px 7px; border-radius: 10px; margin: 1px 2px 1px 0; white-space: nowrap; }
+  .prov-tag { inline-flex; align-items: center; gap: 3px; background: #f0ede8; color: #888; font-size: 10px; padding: 2px 7px; border-radius: 10px; margin: 1px 2px 1px 0; white-space: nowrap; }
   .prov-tag.shared { background: #e0f7fa; color: #00aec3; }
   .sector-tag { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 10px; background: var(--bg); color: var(--c); font-weight: 500; }
   .status-tag { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 10px; }
@@ -255,13 +256,12 @@
 
   <div class="sec-label">Distribución territorial</div>
   <div class="two-col">
-    <!-- SECCIÓN DEL MAPA LIMITADA Y CORREGIDA -->
     <div class="map-zone">
       <div class="ct">Proyectos por provincia</div>
       <div class="cs">Los puntos compartidos aparecen en todas las provincias involucradas</div>
-<div class="map-container">
-  <iframe src="mapa_interactivo_RIGI_detallado.html" height="650" style="border:none; width:100%;" allowfullscreen></iframe>
-</div>
+      <div class="map-container">
+        <iframe src="mapa_interactivo_RIGI_detallado.html" height="600" style="border:none; width:100%;" allowfullscreen></iframe>
+      </div>
     </div>
     
     <div class="ranking-zone">
@@ -324,7 +324,6 @@
   <p></p>
 </div>
 
-<!-- DRAWER -->
 <div class="drawer-overlay" id="overlay" onclick="closeDrawer()"></div>
 <div class="drawer" id="drawer">
   <div class="drawer-header">
