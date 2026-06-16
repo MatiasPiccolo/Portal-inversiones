@@ -61,7 +61,7 @@
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
   @media(max-width:700px){ .two-col { grid-template-columns: 1fr; } }
 
-/* ZONA DE MAPA AMPLIADA Y SIN SCROLL */
+/* RECUADRO DEL MAPA AGRANDADO DIRECTAMENTE */
   .map-zone { 
     background: #fff; 
     border: 1px solid #e8e4dc; 
@@ -69,20 +69,16 @@
     padding: 1.25rem; 
     display: flex; 
     flex-direction: column; 
-    min-height: 720px; /* Aumentado a 720px para asegurar espacio de sobra */
+    height: auto; /* Permite que la caja se estire según lo grande que sea el mapa */
   }
   .map-container { 
-    flex: 1; 
     width: 100%; 
     margin-top: .5rem; 
     overflow: hidden; 
-    position: relative;
   }
-  /* Forzamos al iframe a ocupar el espacio limpio sin añadir bordes internos */
   .map-container iframe {
     display: block;
     width: 100%;
-    height: 100%;
     border: 0;
   }
   
@@ -263,9 +259,9 @@
     <div class="map-zone">
       <div class="ct">Proyectos por provincia</div>
       <div class="cs">Los puntos compartidos aparecen en todas las provincias involucradas</div>
-      <div class="map-container">
-        <iframe src="mapa_interactivo_RIGI_detallado.html" style="border:none;" allowfullscreen></iframe>
-      </div>
+<div class="map-container">
+  <iframe src="mapa_interactivo_RIGI_detallado.html" height="650" style="border:none; width:100%;" allowfullscreen></iframe>
+</div>
     </div>
     
     <div class="ranking-zone">
