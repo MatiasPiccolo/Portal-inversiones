@@ -61,9 +61,22 @@
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
   @media(max-width:700px){ .two-col { grid-template-columns: 1fr; } }
 
-  /* ZONA DE MAPA CORREGIDA Y AMPLIADA */
-  .map-zone { background: #fff; border: 1px solid #e8e4dc; border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; min-height: 610px; }
-  .map-container { flex: 1; width: 100%; margin-top: .5rem; }
+/* ZONA DE MAPA CORREGIDA Y AMPLIADA */
+  .map-zone { 
+    background: #fff; 
+    border: 1px solid #e8e4dc; 
+    border-radius: 12px; 
+    padding: 1.25rem; 
+    display: flex; 
+    flex-direction: column; 
+    min-height: 680px; /* Aumentado para dar aire al mapa de 540px */
+  }
+  .map-container { 
+    flex: 1; 
+    width: 100%; 
+    margin-top: .5rem; 
+    overflow: hidden; /* Evita que el contenedor genere desbordamientos extra */
+  }
   
   .ranking-zone { background: #fff; border: 1px solid #e8e4dc; border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1rem; }
   .ranking-list { display: flex; flex-direction: column; gap: 8px; }
