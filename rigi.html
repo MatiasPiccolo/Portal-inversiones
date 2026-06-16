@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RIGI — Dirección de Promoción y Desarrollo de Inversiones</title>
 
-<!-- META TAGS -->
 <meta name="description" content="Régimen de Incentivos para Grandes Inversiones. Proyectos adheridos por provincia y sector. Ministerio de Producción, Ciencia e Innovación Tecnológica · PBA.">
 <meta name="author" content="Dirección de Promoción y Desarrollo de Inversiones · PBA">
 <meta property="og:title" content="RIGI — Dirección de Promoción y Desarrollo de Inversiones">
@@ -40,20 +39,16 @@
   .page-header-title { font-family: 'Encode Sans', sans-serif; font-size: 28px; color: #1a1a1a; margin-bottom: .3rem; }
   .page-header-sub { font-size: 13px; color: #999; }
 
- /* NUEVO BLOQUE MODIFICADO PARA LOS TAMAÑOS */
   .mast { background: #0f1923; margin: 1.5rem 2rem; border-radius: 12px; padding: 1.5rem 2rem; position: relative; overflow: hidden; font-family: 'Encode Sans', sans-serif; color: #ffffff; }
   .mast::before { content:''; position:absolute; top:-60px; right:-60px; width:300px; height:300px; border:1px solid rgba(232,220,200,.05); border-radius:50%; pointer-events:none; }
   .mast-label { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #ffffff; margin-bottom: .75rem; }
   .mast-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
   .kpi { background: rgba(255,255,255,.06); border-radius: 8px; padding: .75rem 1rem; }
  
-  /* 1. Títulos de arriba: Subidos de 11px a 13px y con un grosor medio para que se lean mejor */
   .kpi-l { font-size: 13px; font-weight: 500; color: #ffffff; margin-bottom: 6px; opacity: 0.9; }
-  
-  /* 2. Números: Bajados un punto (de 22px a 21px) */
   .kpi-v { font-size: 20px; font-weight: 500; color: #ffffff; font-style: normal; }
  
-  .kpi-ph { font-style: normal; } /* Anula la itálica nativa de esta clase */
+  .kpi-ph { font-style: normal; }
   .kpi-d { font-size: 11px; margin-top: 3px; color: #ffffff; opacity: 0.8; }
 
   .content { padding: 0 2rem 2rem; }
@@ -65,13 +60,16 @@
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
   @media(max-width:700px){ .two-col { grid-template-columns: 1fr; } }
 
-  .map-zone { background: #fff; border: 1px solid #e8e4dc; border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; }
+  /* ZONA DE MAPA CORREGIDA Y AGRANDADA */
+  .map-zone { background: #fff; border: 1px solid #e8e4dc; border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; min-height: 580px; }
+  .map-container { flex: 1; width: 100%; margin-top: .5rem; }
+  
   .map-placeholder { flex: 1; min-height: 420px; border: 1.5px dashed #e0ddd8; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; color: #ccc; background: #faf9f7; }
   .map-placeholder i { font-size: 52px; }
   .map-placeholder p { font-size: 13px; }
   .map-placeholder code { font-size: 11px; background: #f0ede8; padding: 4px 8px; border-radius: 4px; color: #bbb; }
 
-  .ranking-zone { background: #fff; border: 1px solid #e8e4dc; border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
+  .ranking-zone { background: #fff; border: 1px solid #e8e4dc; border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1rem; }
   .ranking-list { display: flex; flex-direction: column; gap: 8px; }
   .ranking-row { display: flex; align-items: center; gap: 10px; }
   .ranking-num { font-size: 11px; color: #bbb; width: 16px; flex-shrink: 0; text-align: right; }
@@ -124,7 +122,6 @@
   .drawer-tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .drawer-analysis { font-size: 13px; color: #666; line-height: 1.7; background: #f7f5f0; border-radius: 8px; padding: 1rem; }
   .drawer-analysis.ph { color: #ccc; font-style: italic; }
-
 
   /* FILTROS TABLA */
   .filtros-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1rem; align-items: center; }
@@ -273,10 +270,11 @@
     <div class="map-zone">
       <div class="ct">Proyectos por provincia</div>
       <div class="cs">Los puntos compartidos aparecen en todas las provincias involucradas</div>
-<div class="map-zone">
-  <iframe src="mapa_interactivo_RIGI_detallado.html" width="100%" height="480px" style="border:none;" allowfullscreen></iframe>
-</div>
+      <div class="map-container">
+        <iframe src="mapa_interactivo_RIGI_detallado.html" width="100%" height="540px" style="border:none;" allowfullscreen></iframe>
+      </div>
     </div>
+    
     <div class="ranking-zone">
       <div>
         <div class="ct">Ranking de provincias</div>
@@ -337,7 +335,6 @@
   <p></p>
 </div>
 
-<!-- DRAWER -->
 <div class="drawer-overlay" id="overlay" onclick="closeDrawer()"></div>
 <div class="drawer" id="drawer">
   <div class="drawer-header">
@@ -368,6 +365,10 @@
 </div>
 
 <script>
+  // Aquí va tu lógica de Javascript para cargar los datos dinámicos
+</script>
+</body>
+</html>
 // ══════════════════════════════════════════════════════════════
 // EDITÁ ESTOS ARRAYS CON TUS DATOS REALES
 // ══════════════════════════════════════════════════════════════
